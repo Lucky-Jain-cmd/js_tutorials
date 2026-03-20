@@ -21,7 +21,7 @@ let b2 = 456
 
 
 
-/*
+
 📌 1. Scope
 
 var
@@ -132,5 +132,4 @@ Use const when the value should not change.
 Use let when the value may change.
 
 Avoid var because it causes bugs due to function scope and hoisting.
-*/
 
