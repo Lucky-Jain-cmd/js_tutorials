@@ -108,9 +108,9 @@ console.log(typeof symbol);  //undefined
 
 let a = true
 let string_number =String(a)
-console.log(string_number);
-console.log(typeof(string_number));
-console.log(typeof a);
+console.log(string_number);  //"true" (string value)
+console.log(typeof(string_number));     // string
+console.log(typeof a);          //boolean
 
 
 This is **the exact confusion most people have**—and clearing this will make your fundamentals very strong 👇
@@ -240,10 +240,5 @@ console.log(b); // 10 ✅
 # 💡 Final One-Line Answer
 
 👉 **Primitives are immutable because their values cannot be changed—only the variable reference can be reassigned to a new value.**
-
----
-
-If you want next, I can show:
-🔥 how this concept is used in **React, state updates, and bugs in interviews** 🚀
 
 
