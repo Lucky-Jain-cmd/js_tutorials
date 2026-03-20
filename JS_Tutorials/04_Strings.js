@@ -1,7 +1,7 @@
 //             STRINGS IN JS
 const str1 = "Lucky Jain"
 const str2 = "JAI JINENDRA to all"
-console.log(${str2} My name is ${str1}`);
+console.log(`${str2} My name is ${str1}`);
 
 
 
@@ -13,7 +13,7 @@ const n = new Number(120)
 console.log(n.toString().length)  //3
 
 
-/*
+
 
 Math.random()
 Returns a floating-point number in the range:
@@ -31,5 +31,3 @@ randomInt(5, 10); // 5 to 10
 | --------------------------------------------------- | ----------------- |
 | `Math.floor(Math.random() * (max - min)) + min`     | min ≤ x < max     |
 | `Math.floor(Math.random() * (max - min + 1)) + min` | **min ≤ x ≤ max** |
-
-*/
