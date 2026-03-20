@@ -1,7 +1,3 @@
-/*
-Here is a **clear, interview-ready explanation of Stack vs Heap in JavaScript** 👇
-
----
 
 # 🧠 **Stack vs Heap in JavaScript**
 
@@ -65,4 +61,3 @@ obj2.name = "Bob"
 
 > Stack stores **primitive values and function calls**, while Heap stores **objects and reference data**.
 ---
-*/
