@@ -1,0 +1,1080 @@
+# 🧠 JavaScript MCQs (1–25) — Core Concepts
+
+---
+
+### 1. What is the output?
+
+```js
+console.log(typeof null);
+```
+
+A) null
+B) object
+C) undefined
+D) number
+
+✅ **Answer: B) object**
+📘 *Explanation:* This is a **known JavaScript bug**. `null` is primitive but `typeof` returns `"object"`.
+
+---
+
+### 2. What is the output?
+
+```js
+console.log(typeof NaN);
+```
+
+A) NaN
+B) number
+C) undefined
+D) object
+
+✅ **Answer: B) number**
+📘 *Explanation:* `NaN` means *Not a Number*, but its type is still `"number"`.
+
+---
+
+### 3. What is the output?
+
+```js
+console.log(NaN == NaN);
+```
+
+A) true
+B) false
+C) error
+D) undefined
+
+✅ **Answer: B) false**
+📘 *Explanation:* `NaN` is the **only value not equal to itself**.
+
+---
+
+### 4. Which is NOT a primitive type?
+
+A) string
+B) number
+C) boolean
+D) object
+
+✅ **Answer: D) object**
+📘 *Explanation:* Objects are **non-primitive (reference type)**.
+
+---
+
+### 5. What is the output?
+
+```js
+console.log(1 + "2" + 3);
+```
+
+A) 6
+B) "123"
+C) "33"
+D) 15
+
+✅ **Answer: B) "123"**
+📘 *Explanation:* `+` with string causes **type coercion → string concatenation**.
+
+---
+
+### 6. What is the output?
+
+```js
+console.log("5" - 2);
+```
+
+A) 3
+B) "3"
+C) NaN
+D) undefined
+
+✅ **Answer: A) 3**
+📘 *Explanation:* `-` forces numeric conversion → `"5"` becomes `5`.
+
+---
+
+### 7. What is the output?
+
+```js
+console.log(true + true);
+```
+
+A) true
+B) 2
+C) 1
+D) NaN
+
+✅ **Answer: B) 2**
+📘 *Explanation:* `true = 1`, so `1 + 1 = 2`.
+
+---
+
+### 8. What is the output?
+
+```js
+console.log([] == false);
+```
+
+A) true
+B) false
+C) error
+D) undefined
+
+✅ **Answer: A) true**
+📘 *Explanation:* `[] → "" → 0`, `false → 0`, so `0 == 0`.
+
+---
+
+### 9. What is the output?
+
+```js
+console.log([] === false);
+```
+
+A) true
+B) false
+C) error
+D) undefined
+
+✅ **Answer: B) false**
+📘 *Explanation:* `===` checks **type + value**, types differ.
+
+---
+
+### 10. What is the output?
+
+```js
+console.log(null == undefined);
+```
+
+A) true
+B) false
+C) error
+D) NaN
+
+✅ **Answer: A) true**
+📘 *Explanation:* `null` and `undefined` are **loosely equal only to each other**.
+
+---
+
+### 11. What is the output?
+
+```js
+console.log(null === undefined);
+```
+
+A) true
+B) false
+C) NaN
+D) error
+
+✅ **Answer: B) false**
+📘 *Explanation:* Different types → strict equality fails.
+
+---
+
+### 12. What is the output?
+
+```js
+console.log("10" * "2");
+```
+
+A) 20
+B) "20"
+C) NaN
+D) error
+
+✅ **Answer: A) 20**
+📘 *Explanation:* `*` converts strings to numbers.
+
+---
+
+### 13. What is the output?
+
+```js
+console.log("hello" - 1);
+```
+
+A) hello1
+B) NaN
+C) error
+D) undefined
+
+✅ **Answer: B) NaN**
+📘 *Explanation:* Non-numeric string → cannot convert → `NaN`.
+
+---
+
+### 14. Which keyword declares block-scoped variable?
+
+A) var
+B) let
+C) const
+D) Both B & C
+
+✅ **Answer: D) Both B & C**
+📘 *Explanation:* `let` and `const` are **block-scoped**.
+
+---
+
+### 15. Which keyword is function-scoped?
+
+A) let
+B) const
+C) var
+D) none
+
+✅ **Answer: C) var**
+📘 *Explanation:* `var` ignores block scope → function/global scoped.
+
+---
+
+### 16. What is the output?
+
+```js
+console.log(typeof undefined);
+```
+
+A) undefined
+B) object
+C) string
+D) error
+
+✅ **Answer: A) undefined**
+📘 *Explanation:* `undefined` has its own type.
+
+---
+
+### 17. What is the output?
+
+```js
+console.log(0 == false);
+```
+
+A) true
+B) false
+C) NaN
+D) error
+
+✅ **Answer: A) true**
+📘 *Explanation:* `false → 0`, so `0 == 0`.
+
+---
+
+### 18. What is the output?
+
+```js
+console.log("" == false);
+```
+
+A) true
+B) false
+C) NaN
+D) error
+
+✅ **Answer: A) true**
+📘 *Explanation:* `"" → 0`, `false → 0`.
+
+---
+
+### 19. What is the output?
+
+```js
+console.log("" === false);
+```
+
+A) true
+B) false
+C) NaN
+D) error
+
+✅ **Answer: B) false**
+📘 *Explanation:* Different types → strict equality fails.
+
+---
+
+### 20. What is the output?
+
+```js
+console.log([] + []);
+```
+
+A) []
+B) ""
+C) 0
+D) NaN
+
+✅ **Answer: B) ""**
+📘 *Explanation:* Arrays convert to empty string → `"" + ""`.
+
+---
+
+### 21. What is the output?
+
+```js
+console.log([] + {});
+```
+
+A) "[object Object]"
+B) {}
+C) error
+D) undefined
+
+✅ **Answer: A) "[object Object]"**
+📘 *Explanation:* `[] → ""`, `{}` → object string.
+
+---
+
+### 22. What is the output?
+
+```js
+console.log({} + []);
+```
+
+A) "[object Object]"
+B) 0
+C) NaN
+D) error
+
+✅ **Answer: B) 0**
+📘 *Explanation:* `{}` treated as block → `+[] → 0`.
+
+---
+
+### 23. What is the output?
+
+```js
+console.log(!!"hello");
+```
+
+A) true
+B) false
+C) error
+D) undefined
+
+✅ **Answer: A) true**
+📘 *Explanation:* Non-empty string → truthy → `true`.
+
+---
+
+### 24. What is the output?
+
+```js
+console.log(!!0);
+```
+
+A) true
+B) false
+C) NaN
+D) error
+
+✅ **Answer: B) false**
+📘 *Explanation:* `0` is falsy.
+
+---
+
+### 25. What is the output?
+
+```js
+console.log(Boolean(" "));
+```
+
+A) true
+B) false
+C) NaN
+D) error
+
+✅ **Answer: A) true**
+📘 *Explanation:* Space `" "` is **non-empty → truthy**.
+
+### 26. What is the output?
+
+```js
+console.log(a);
+var a = 5;
+```
+
+A) 5
+B) undefined
+C) error
+D) null
+
+✅ **Answer: B) undefined**
+📘 *Explanation:* `var` is **hoisted** but initialized as `undefined`.
+
+---
+
+### 27. What is the output?
+
+```js
+console.log(a);
+let a = 5;
+```
+
+A) 5
+B) undefined
+C) ReferenceError
+D) null
+
+✅ **Answer: C) ReferenceError**
+📘 *Explanation:* `let` is hoisted but in **TDZ (Temporal Dead Zone)**.
+
+---
+
+### 28. What is the output?
+
+```js
+function test() {
+  console.log(a);
+  var a = 10;
+}
+test();
+```
+
+A) 10
+B) undefined
+C) error
+D) null
+
+✅ **Answer: B) undefined**
+📘 *Explanation:* Local `var a` is hoisted inside function.
+
+---
+
+### 29. What is the output?
+
+```js
+function test() {
+  console.log(a);
+}
+test();
+var a = 10;
+```
+
+A) 10
+B) undefined
+C) error
+D) null
+
+✅ **Answer: B) undefined**
+📘 *Explanation:* `a` exists but is `undefined` at call time.
+
+---
+
+### 30. What is the output?
+
+```js
+var a = 10;
+function test() {
+  console.log(a);
+}
+test();
+```
+
+A) 10
+B) undefined
+C) error
+D) null
+
+✅ **Answer: A) 10**
+📘 *Explanation:* Function accesses **global scope**.
+
+---
+
+### 31. What is a closure?
+
+A) Function inside loop
+B) Function with no return
+C) Function with preserved outer scope
+D) Function with error
+
+✅ **Answer: C)**
+📘 *Explanation:* Closure remembers **outer variables even after execution**.
+
+---
+
+### 32. What is the output?
+
+```js
+function outer() {
+  let x = 10;
+  return function() {
+    console.log(x);
+  }
+}
+outer()();
+```
+
+A) 10
+B) undefined
+C) error
+D) null
+
+✅ **Answer: A) 10**
+📘 *Explanation:* Closure retains `x`.
+
+---
+
+### 33. What is the output?
+
+```js
+(function(){
+  console.log("Hello");
+})();
+```
+
+A) error
+B) Hello
+C) undefined
+D) null
+
+✅ **Answer: B) Hello**
+📘 *Explanation:* This is an **IIFE (Immediately Invoked Function Expression)**.
+
+---
+
+### 34. Which is correct arrow function syntax?
+
+A) `()=>{}`
+B) `function()=>{}`
+C) `=>()`
+D) `()={}`
+
+✅ **Answer: A)**
+📘 *Explanation:* Arrow functions use `=>`.
+
+---
+
+### 35. Arrow functions have?
+
+A) own `this`
+B) no `this`
+C) global `this`
+D) dynamic `this`
+
+✅ **Answer: B)**
+📘 *Explanation:* Arrow functions inherit `this` from parent.
+
+---
+
+### 36. What is hoisting?
+
+A) Memory allocation
+B) Moving declarations to top
+C) Loop execution
+D) Garbage collection
+
+✅ **Answer: B)**
+📘 *Explanation:* JS moves declarations to top before execution.
+
+---
+
+### 37. What is the output?
+
+```js
+var x = 1;
+function foo() {
+  console.log(x);
+  var x = 2;
+}
+foo();
+```
+
+A) 1
+B) 2
+C) undefined
+D) error
+
+✅ **Answer: C) undefined**
+📘 *Explanation:* Local `x` is hoisted.
+
+---
+
+### 38. What is the output?
+
+```js
+let x = 1;
+function foo() {
+  console.log(x);
+}
+foo();
+```
+
+A) 1
+B) undefined
+C) error
+D) null
+
+✅ **Answer: A) 1**
+📘 *Explanation:* Uses global `x`.
+
+---
+
+### 39. What is function declaration?
+
+A) `let f = function()`
+B) `function f(){}`
+C) `()=>{}`
+D) none
+
+✅ **Answer: B)**
+📘 *Explanation:* Declared with `function` keyword.
+
+---
+
+### 40. Function expressions are?
+
+A) hoisted
+B) not hoisted
+C) partially hoisted
+D) global
+
+✅ **Answer: C)**
+📘 *Explanation:* Variable is hoisted, but function not initialized.
+
+---
+
+---
+
+# ⚡ JavaScript MCQs (51–75) — Objects, Arrays, Async
+
+---
+
+### 51. What is the output?
+
+```js
+console.log(typeof []);
+```
+
+A) array
+B) object
+C) list
+D) undefined
+
+✅ **Answer: B) object**
+📘 *Explanation:* Arrays are objects.
+
+---
+
+### 52. How to check array?
+
+A) typeof
+B) instanceof
+C) Array.isArray()
+D) both B & C
+
+✅ **Answer: D)**
+📘 *Explanation:* Both methods work.
+
+---
+
+### 53. What is the output?
+
+```js
+console.log([1,2] == "1,2");
+```
+
+A) true
+B) false
+C) error
+D) NaN
+
+✅ **Answer: A)**
+📘 *Explanation:* Array converts to string.
+
+---
+
+### 54. What is destructuring?
+
+A) copying array
+B) extracting values
+C) looping
+D) sorting
+
+✅ **Answer: B)**
+📘 *Explanation:* Extract values from arrays/objects.
+
+---
+
+### 55. What is spread operator?
+
+A) `...`
+B) `***`
+C) `++`
+D) `&&`
+
+✅ **Answer: A)**
+📘 *Explanation:* Expands elements.
+
+---
+
+### 56. What is Promise?
+
+A) variable
+B) object
+C) function
+D) loop
+
+✅ **Answer: B)**
+📘 *Explanation:* Handles async operations.
+
+---
+
+### 57. Promise states?
+
+A) start/end
+B) pending/resolved/rejected
+C) true/false
+D) none
+
+✅ **Answer: B)**
+📘 *Explanation:* 3 states.
+
+---
+
+### 58. What is async/await?
+
+A) sync code
+B) async syntax sugar
+C) loop
+D) variable
+
+✅ **Answer: B)**
+📘 *Explanation:* Cleaner way to handle promises.
+
+---
+
+### 59. What is callback?
+
+A) loop
+B) function passed as argument
+C) variable
+D) object
+
+✅ **Answer: B)**
+📘 *Explanation:* Function inside function.
+
+---
+
+### 60. What is event loop?
+
+A) loop
+B) queue handler
+C) async engine
+D) JS mechanism
+
+✅ **Answer: D)**
+📘 *Explanation:* Handles async execution.
+
+---
+
+---
+
+# 🚀 JavaScript MCQs (76–100) — Advanced & Tricky
+
+---
+
+### 76. What is the output?
+
+```js
+console.log(0.1 + 0.2 == 0.3);
+```
+
+A) true
+B) false
+C) NaN
+D) error
+
+✅ **Answer: B)**
+📘 *Explanation:* Floating point precision issue.
+
+---
+
+### 77. What is strict mode?
+
+A) fast mode
+B) safer JS
+C) debug mode
+D) none
+
+✅ **Answer: B)**
+📘 *Explanation:* Prevents unsafe actions.
+
+---
+
+### 78. What is `this`?
+
+A) variable
+B) context object
+C) function
+D) keyword
+
+✅ **Answer: B)**
+📘 *Explanation:* Refers to execution context.
+
+---
+
+### 79. What is prototype?
+
+A) function
+B) inheritance mechanism
+C) object
+D) variable
+
+✅ **Answer: B)**
+📘 *Explanation:* Enables inheritance.
+
+---
+
+### 80. What is `bind()`?
+
+A) call function
+B) bind context
+C) create object
+D) loop
+
+✅ **Answer: B)**
+📘 *Explanation:* Fixes `this`.
+
+---
+
+### 81. What is `call()`?
+
+A) async
+B) immediate invocation
+C) loop
+D) promise
+
+✅ **Answer: B)**
+📘 *Explanation:* Calls function with context.
+
+---
+
+### 82. What is `apply()`?
+
+A) same as call but array args
+B) loop
+C) async
+D) object
+
+✅ **Answer: A)**
+📘 *Explanation:* Arguments passed as array.
+
+---
+
+### 83. What is debounce?
+
+A) delay execution
+B) repeat execution
+C) loop
+D) event
+
+✅ **Answer: A)**
+📘 *Explanation:* Limits function calls.
+
+---
+
+### 84. What is throttle?
+
+A) delay
+B) limit frequency
+C) loop
+D) async
+
+✅ **Answer: B)**
+📘 *Explanation:* Executes at fixed interval.
+
+---
+
+### 85. What is currying?
+
+A) loop
+B) function returning function
+C) async
+D) object
+
+✅ **Answer: B)**
+📘 *Explanation:* Breaks function into smaller functions.
+
+---
+
+### 86. What is memoization?
+
+A) caching
+B) loop
+C) async
+D) recursion
+
+✅ **Answer: A)**
+📘 *Explanation:* Stores results for optimization.
+
+---
+
+### 87. What is deep copy?
+
+A) reference copy
+B) value copy
+C) shallow copy
+D) none
+
+✅ **Answer: B)**
+📘 *Explanation:* Independent copy.
+
+---
+
+### 88. What is shallow copy?
+
+A) reference copy
+B) deep copy
+C) loop
+D) async
+
+✅ **Answer: A)**
+📘 *Explanation:* Copies reference.
+
+---
+
+### 89. What is JSON?
+
+A) object
+B) string format
+C) array
+D) function
+
+✅ **Answer: B)**
+📘 *Explanation:* Data interchange format.
+
+---
+
+### 90. What is localStorage?
+
+A) temporary storage
+B) permanent browser storage
+C) server storage
+D) RAM
+
+✅ **Answer: B)**
+📘 *Explanation:* Stores data persistently.
+
+---
+
+### 91. What is sessionStorage?
+
+A) permanent
+B) per session
+C) server
+D) RAM
+
+✅ **Answer: B)**
+📘 *Explanation:* Clears when tab closes.
+
+---
+
+### 92. What is DOM?
+
+A) database
+B) document structure
+C) server
+D) loop
+
+✅ **Answer: B)**
+📘 *Explanation:* Represents HTML structure.
+
+---
+
+### 93. What is BOM?
+
+A) browser object model
+B) database
+C) loop
+D) API
+
+✅ **Answer: A)**
+📘 *Explanation:* Browser-specific objects.
+
+---
+
+### 94. What is setTimeout?
+
+A) sync
+B) async
+C) loop
+D) object
+
+✅ **Answer: B)**
+📘 *Explanation:* Executes after delay.
+
+---
+
+### 95. What is setInterval?
+
+A) once
+B) repeated
+C) async
+D) both B & C
+
+✅ **Answer: D)**
+📘 *Explanation:* Repeats asynchronously.
+
+---
+
+### 96. What is garbage collection?
+
+A) memory allocation
+B) memory cleanup
+C) loop
+D) async
+
+✅ **Answer: B)**
+📘 *Explanation:* Removes unused memory.
+
+---
+
+### 97. What is closure memory?
+
+A) stack
+B) heap
+C) retained scope
+D) global
+
+✅ **Answer: C)**
+📘 *Explanation:* Closure stores outer variables.
+
+---
+
+### 98. What is strict equality?
+
+A) `==`
+B) `===`
+C) `!=`
+D) `!==`
+
+✅ **Answer: B)**
+📘 *Explanation:* Checks type + value.
+
+---
+
+### 99. What is coercion?
+
+A) conversion
+B) loop
+C) async
+D) error
+
+✅ **Answer: A)**
+📘 *Explanation:* Automatic type conversion.
+
+---
+
+### 100. What is ES6?
+
+A) browser
+B) JS version
+C) library
+D) framework
+
+✅ **Answer: B)**
+📘 *Explanation:* Major JavaScript update (2015).
+
+---
