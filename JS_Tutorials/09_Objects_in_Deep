@@ -1,0 +1,303 @@
+# 🧠 PART 1: OBJECTS – COMPLETE DEEP DIVE
+
+---
+
+# 🎯 1. What is an Object?
+
+👉 Object = **collection of key-value pairs**
+
+```js
+let user = {
+  name: "Lucky",
+  age: 22
+};
+```
+
+✔ Keys → strings/symbols
+✔ Values → anything (number, array, function, object)
+
+---
+
+# 🎯 2. Object Creation Methods 🏗️
+
+---
+
+## 🔹 (A) Object Literal ⭐ (most used)
+
+```js
+let obj = { a: 1, b: 2 };
+```
+
+---
+
+## 🔹 (B) Constructor
+
+```js
+let obj = new Object();
+obj.name = "Lucky";
+```
+
+---
+
+## 🔹 (C) Object.create()
+
+```js
+let proto = { greet() { console.log("hi"); } };
+let obj = Object.create(proto);
+```
+
+---
+
+## 🔹 (D) Class-based
+
+```js
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+}
+```
+
+---
+
+# 🎯 3. Accessing Properties 🔑
+
+```js
+obj.name        // dot
+obj["name"]     // bracket
+```
+
+👉 Use bracket when:
+
+* space in key
+* dynamic key
+* symbol key
+
+---
+
+# 🎯 4. Adding / Updating / Deleting
+
+```js
+obj.age = 25;       // update
+obj.city = "Delhi"; // add
+delete obj.city;    // delete
+```
+
+---
+
+# 🎯 5. Nested Objects 🧠
+
+```js
+let user = {
+  name: "Lucky",
+  address: {
+    city: "Mathura"
+  }
+};
+
+user.address.city;
+```
+
+---
+
+# 🎯 6. Object Methods (Functions inside object)
+
+```js
+let user = {
+  name: "Lucky",
+  greet() {
+    console.log("Hello " + this.name);
+  }
+};
+```
+
+---
+
+# 🎯 7. Important Object Methods 🔥
+
+---
+
+## 🔹 `Object.keys()`
+
+```js
+Object.keys(user); // ["name","age"]
+```
+
+---
+
+## 🔹 `Object.values()`
+
+```js
+Object.values(user); // ["Lucky",22]
+```
+
+---
+
+## 🔹 `Object.entries()`
+
+```js
+Object.entries(user);
+// [["name","Lucky"],["age",22]]
+```
+
+---
+
+## 🔹 `Object.fromEntries()`
+
+```js
+Object.fromEntries([["a",1]]);
+```
+
+---
+
+## 🔹 `Object.assign()` (copy)
+
+```js
+let copy = Object.assign({}, user);
+```
+
+---
+
+## 🔹 Spread operator ⭐
+
+```js
+let copy = { ...user };
+```
+
+---
+
+## 🔹 `Object.freeze()` ❄️
+
+```js
+Object.freeze(user);
+user.age = 30; // ignored
+```
+
+---
+
+## 🔹 `Object.seal()`
+
+```js
+Object.seal(user);
+```
+
+✔ Can update
+❌ Cannot add/remove
+
+---
+
+# 🎯 8. Iterating Objects 🔁
+
+---
+
+## 🔹 for...in
+
+```js
+for (let key in user) {
+  console.log(key, user[key]);
+}
+```
+
+---
+
+## 🔹 Using entries
+
+```js
+Object.entries(user).forEach(([k,v]) => {
+  console.log(k,v);
+});
+```
+
+---
+
+# 🎯 9. Destructuring 🔥
+
+```js
+let { name, age } = user;
+```
+
+---
+
+## Default value
+
+```js
+let { city = "Delhi" } = user;
+```
+
+---
+
+# 🎯 10. Computed Properties ⚡
+
+```js
+let key = "score";
+
+let obj = {
+  [key]: 100
+};
+```
+
+---
+
+# 🎯 11. Symbols in Objects 🔐
+
+```js
+let sym = Symbol("id");
+
+let obj = {
+  [sym]: 123
+};
+```
+
+👉 Hidden from `Object.keys()`
+
+---
+
+# 🎯 12. Shallow vs Deep Copy ⚠️
+
+---
+
+## 🔹 Shallow copy
+
+```js
+let copy = { ...obj };
+```
+
+👉 Nested objects still linked ❌
+
+---
+
+## 🔹 Deep copy
+
+```js
+let deep = JSON.parse(JSON.stringify(obj));
+```
+
+---
+
+# 🎯 13. Optional Chaining 🔥
+
+```js
+user?.address?.city
+```
+
+👉 Avoids errors
+
+---
+
+# 🎯 14. Nullish Coalescing
+
+```js
+let val = user.age ?? 18;
+```
+
+---
+
+# 🎯 15. Object vs Map ⚔️
+
+| Object      | Map           |
+| ----------- | ------------- |
+| string keys | any type keys |
+| slower      | faster        |
+| simple      | advanced      |
+
+---
