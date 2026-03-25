@@ -1,0 +1,518 @@
+__________________________________________________________________________________________________________________________________________________________________
+Here are **all 50 questions with clear answers + outputs + explanations** (basic → advanced)
+
+---
+
+# 🟢 BASIC (1–15)
+
+---
+
+### 1. What is an object?
+
+👉 Collection of key-value pairs.
+
+```js
+let obj = { name: "Lucky" };
+```
+
+---
+
+### 2. Dot vs Bracket?
+
+```js
+obj.name        // dot
+obj["name"]     // bracket
+```
+
+✔ Bracket needed for:
+
+* spaces
+* dynamic keys
+
+---
+
+### 3. Can object keys be numbers?
+
+```js
+let obj = { 1: "a" };
+```
+
+👉 Yes, but converted to **string `"1"`**
+
+---
+
+### 4. What is `this`?
+
+👉 Refers to **current object**
+
+```js
+let obj = {
+  name: "Lucky",
+  greet() { return this.name; }
+};
+```
+
+---
+
+### 5. Object literal?
+
+```js
+let obj = { a: 1 };
+```
+
+---
+
+### 6. Delete property?
+
+```js
+delete obj.a;
+```
+
+---
+
+### 7. `undefined` vs missing key?
+
+```js
+obj.a // undefined
+```
+
+✔ Could mean:
+
+* key exists but value undefined
+* key doesn't exist
+
+---
+
+### 8. `Object.keys()`?
+
+```js
+Object.keys({a:1}); // ["a"]
+```
+
+---
+
+### 9. Check key exists?
+
+```js
+"a" in obj
+```
+
+---
+
+### 10. `hasOwnProperty()`?
+
+```js
+obj.hasOwnProperty("a");
+```
+
+👉 Checks own property only
+
+---
+
+### 11. `in` vs `hasOwnProperty`
+
+| in                 | hasOwnProperty |
+| ------------------ | -------------- |
+| includes prototype | own only       |
+
+---
+
+### 12. Can object store functions?
+
+✔ Yes
+
+```js
+let obj = { fn() {} };
+```
+
+---
+
+### 13. Nested object?
+
+```js
+{ a: { b: 2 } }
+```
+
+---
+
+### 14. Destructuring?
+
+```js
+let {a} = obj;
+```
+
+---
+
+### 15. Default value?
+
+```js
+let {a = 10} = {};
+```
+
+---
+
+# 🟡 INTERMEDIATE (16–35)
+
+---
+
+### 16. Shallow copy?
+
+👉 Copies only first level
+
+```js
+let copy = {...obj};
+```
+
+---
+
+### 17. Deep copy?
+
+```js
+JSON.parse(JSON.stringify(obj));
+```
+
+---
+
+### 18. assign vs spread?
+
+👉 Same purpose
+
+```js
+Object.assign({}, obj);
+{...obj}
+```
+
+---
+
+### 19. `Object.freeze()`?
+
+👉 No changes allowed
+
+---
+
+### 20. `Object.seal()`?
+
+👉 Only update allowed
+
+---
+
+### 21. Modify frozen?
+
+❌ No
+
+---
+
+### 22. Computed property?
+
+```js
+let key = "a";
+{ [key]: 1 }
+```
+
+---
+
+### 23. Iterate object?
+
+```js
+for(let k in obj)
+```
+
+---
+
+### 24. `for...in` vs `for...of`
+
+| for...in | for...of                |
+| -------- | ----------------------- |
+| keys     | values (iterables only) |
+
+---
+
+### 25. Symbol in object?
+
+👉 Unique key
+
+---
+
+### 26. Why hidden?
+
+👉 Not enumerable
+
+---
+
+### 27. Optional chaining?
+
+```js
+obj?.a?.b
+```
+
+---
+
+### 28. Nullish operator?
+
+```js
+val ?? "default"
+```
+
+---
+
+### 29. Duplicate key?
+
+```js
+{a:1, a:2} // last wins
+```
+
+---
+
+### 30. Boolean key?
+
+```js
+{true: "yes"}
+```
+
+👉 becomes `"true"`
+
+---
+
+### 31. Array vs Object?
+
+| Array   | Object    |
+| ------- | --------- |
+| index   | key       |
+| ordered | unordered |
+
+---
+
+### 32. Clone object?
+
+```js
+{...obj}
+```
+
+---
+
+### 33. Reference type?
+
+👉 Stored by reference
+
+---
+
+### 34. Assign object to variable?
+
+```js
+let b = obj;
+```
+
+👉 both point same memory
+
+---
+
+### 35. JSON stringify/parse?
+
+```js
+JSON.stringify(obj);
+JSON.parse(str);
+```
+
+---
+
+# 🔴 ADVANCED (36–50)
+
+---
+
+### 36. Output
+
+```js
+let obj = {a:1};
+let b = obj;
+b.a = 2;
+console.log(obj.a);
+```
+
+👉 Output: **2**
+
+✔ Same reference
+
+---
+
+### 37. Output
+
+```js
+console.log({} === {});
+```
+
+👉 Output: **false**
+
+✔ Different references
+
+---
+
+### 38. Output
+
+```js
+let obj = {a:1};
+Object.freeze(obj);
+obj.a = 2;
+console.log(obj.a);
+```
+
+👉 Output: **1**
+
+✔ Cannot modify
+
+---
+
+### 39. Prototype chain?
+
+👉 Objects inherit from parent object
+
+---
+
+### 40. `__proto__`?
+
+👉 Reference to prototype
+
+---
+
+### 41. `Object.create()`?
+
+👉 Creates object with prototype
+
+---
+
+### 42. Class vs Object?
+
+| Class     | Object   |
+| --------- | -------- |
+| blueprint | instance |
+
+---
+
+### 43. Can key be object?
+
+```js
+let obj = {};
+obj[{a:1}] = "x";
+```
+
+👉 becomes `"[object Object]"`
+
+---
+
+### 44. Map vs Object?
+
+| Map     | Object     |
+| ------- | ---------- |
+| any key | string key |
+
+---
+
+### 45. Output
+
+```js
+let obj = {a:1};
+delete obj.a;
+console.log(obj.a);
+```
+
+👉 Output: **undefined**
+
+---
+
+### 46. Output
+
+```js
+let obj = {a:1};
+console.log("a" in obj);
+```
+
+👉 Output: **true**
+
+---
+
+### 47. Output ⭐ tricky
+
+```js
+let obj = {};
+obj["1"] = "a";
+obj[1] = "b";
+console.log(obj["1"]);
+```
+
+👉 Output: **"b"**
+
+✔ Both keys become `"1"`
+
+---
+
+### 48. Output
+
+```js
+let obj = {a:1};
+Object.seal(obj);
+obj.b = 2;
+console.log(obj.b);
+```
+
+👉 Output: **undefined**
+
+✔ Cannot add
+
+---
+
+### 49. Output
+
+```js
+let obj = {a:1};
+console.log(Object.entries(obj));
+```
+
+👉 Output:
+
+```js
+[["a",1]]
+```
+
+---
+
+### 50. Output ⭐ tricky
+
+```js
+let sym = Symbol();
+let obj = {[sym]:1};
+console.log(Object.keys(obj));
+```
+
+👉 Output:
+
+```js
+[]
+```
+
+✔ Symbol keys hidden
+
+---
+
+# 🧠 FINAL TAKEAWAYS 🔥
+
+---
+
+## 💎 MOST IMPORTANT CONCEPTS
+
+✔ Objects are **reference types**
+✔ Keys → always string/symbol
+✔ Symbol keys are hidden 🔐
+✔ `this` depends on context
+✔ Spread = shallow copy ⚠️
+
+---
+
+## 🚀 MUST MASTER FOR INTERVIEWS
+
+* `Object.keys / values / entries`
+* `this`
+* shallow vs deep copy
+* `freeze vs seal`
+* symbol behavior
+* reference vs value
+
+---
