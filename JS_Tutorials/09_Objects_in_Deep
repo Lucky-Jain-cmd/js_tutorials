@@ -157,7 +157,16 @@ let copy = Object.assign({}, user);
 ```
 
 ---
+🧠 1. What is hasOwnProperty()?
+---------------------------------
+👉 It is a method used to check whether an object has a specific property as its OWN property (not inherited).
 
+obj.hasOwnProperty("anything")
+
+✔ Returns:
+
+true → property exists directly on object
+false → property does NOT exist OR is inherited
 ## 🔹 Spread operator ⭐
 
 ```js
