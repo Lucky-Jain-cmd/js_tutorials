@@ -1,0 +1,267 @@
+📘 Literals : 
+👉 "A literal is a fixed value that is directly represented in source code without any computation."
+e.g.
+     10        // number literal
+    "hello"   // string literal
+     true      // boolean literal
+______________________________________________________________________________________________________________________________________________________________________
+// OBJECT CREATION 
+-------------------
+const m = Symbol ("Lucky");
+const user = {
+    name : "Lucky Jain",
+    age  : 22,
+    [m]  : "Lucky",
+    location : "Mathura",
+    "is LoggedIn" : true,
+    lastLoginDays : ["Mon","Sat"]
+}
+console.log(user.age);
+console.log(user["age"]);
+// console.log(user.is LoggedIn);
+console.log(user[m]);
+//console.log(user[lastLoginDays]);
+console.log(user.lastLoginDays);
+
+Great 🔥 — now let’s connect your code with **📘 Literals (deep understanding)**
+
+---
+
+# 🧠 First: What literals are in YOUR code
+
+👉 Literal = **value written directly in code**
+
+Let’s break your code 👇
+
+---
+
+## 🔹 1. Symbol Literal
+
+```js
+const m = Symbol("Lucky");
+```
+
+👉 `"Lucky"` → **string literal**
+👉 `Symbol("Lucky")` → creates a **unique symbol**
+
+---
+
+## 🔹 2. Object Literal ⭐
+
+```js
+const user = {
+```
+
+👉 `{ ... }` → **object literal**
+
+Inside it 👇
+
+---
+
+## 🔹 3. Properties Breakdown
+
+```js
+name : "Lucky Jain"
+```
+
+👉 `"Lucky Jain"` → **string literal**
+
+---
+
+```js
+age : 22
+```
+
+👉 `22` → **number literal**
+
+---
+
+```js
+[m] : "Lucky"
+```
+
+👉 `"Lucky"` → **string literal**
+👉 `[m]` → **computed property (using Symbol)**
+
+⚠️ This is NOT a normal key
+It’s a **Symbol key**
+
+---
+
+```js
+location : "Mathura"
+```
+
+👉 `"Mathura"` → literal
+
+---
+
+```js
+"is LoggedIn" : true
+```
+
+👉 `"is LoggedIn"` → **string literal (key)**
+👉 `true` → **boolean literal**
+
+⚠️ Space → must use quotes
+
+---
+
+```js
+lastLoginDays : ["Mon","Sat"]
+```
+
+👉 `["Mon","Sat"]` → **array literal**
+👉 `"Mon"`, `"Sat"` → string literals
+
+---
+
+# 🎯 Now Output Section Explained
+
+---
+
+## ✅ 1. Dot vs Bracket Notation
+
+```js
+console.log(user.age);
+console.log(user["age"]);
+```
+
+✔ Both same → `22`
+
+---
+
+## ❌ 2. This will ERROR
+
+```js
+// console.log(user.is LoggedIn);
+```
+
+👉 ❌ Invalid syntax (space problem)
+
+✔ Correct:
+
+```js
+console.log(user["is LoggedIn"]);
+```
+
+---
+
+## ✅ 3. Symbol Access 🔥
+
+```js
+console.log(user[m]);
+```
+
+✔ Output: `"Lucky"`
+
+👉 Because key is **Symbol (m)**
+👉 Must access using same symbol
+
+---
+
+## ❌ 4. Wrong Access
+
+```js
+// console.log(user[lastLoginDays]);
+```
+
+👉 ❌ `lastLoginDays` is not defined variable
+
+✔ Correct:
+
+```js
+console.log(user["lastLoginDays"]);
+```
+
+OR
+
+```js
+console.log(user.lastLoginDays);
+```
+
+---
+
+## ✅ 5. Correct Access
+
+```js
+console.log(user.lastLoginDays);
+```
+
+✔ Output:
+
+```js
+["Mon","Sat"]
+```
+
+---
+
+# 🚨 IMPORTANT CONCEPTS (INTERVIEW LEVEL)
+
+---
+
+## 🔥 1. Symbol Keys Are Hidden
+
+```js
+console.log(Object.keys(user));
+```
+
+👉 Will NOT show symbol key
+
+👉 To access:
+
+```js
+Object.getOwnPropertySymbols(user);
+```
+
+---
+
+## 🔥 2. Dot vs Bracket Rule
+
+| Case        | Use                   |
+| ----------- | --------------------- |
+| Normal key  | `user.age`            |
+| Space key   | `user["is LoggedIn"]` |
+| Dynamic key | `user[key]`           |
+| Symbol key  | `user[m]`             |
+
+---
+
+## 🔥 3. Types of Literals Used Here
+
+| Literal Type | Example         |
+| ------------ | --------------- |
+| String       | `"Lucky Jain"`  |
+| Number       | `22`            |
+| Boolean      | `true`          |
+| Array        | `["Mon","Sat"]` |
+| Object       | `{...}`         |
+
+---
+
+# 🧠 Final Understanding
+
+👉 Your code is a perfect example of:
+
+* ✅ Object literal
+* ✅ Array literal
+* ✅ String literal
+* ✅ Symbol usage
+* ✅ Computed property
+
+---
+
+# 🚀 Pro Tip
+
+```js
+console.log(user);
+```
+
+👉 You’ll see:
+
+* normal keys
+* but symbol key appears differently
+
+---
+
+_________________________________________________________________________________________________________________________________________________________________
