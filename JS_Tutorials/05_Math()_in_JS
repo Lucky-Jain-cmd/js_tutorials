@@ -1,0 +1,361 @@
+JavaScript’s **`Math` object** is a powerhouse 💪 for all kinds of numerical operations—rounding, randomness, powers, trigonometry, logs, and more.
+
+# 🎯 1. What is `Math` in JS?
+
+👉 `Math` is a **built-in object** (not a constructor)
+
+```js
+console.log(typeof Math); // object
+```
+
+✔ You don’t create it
+❌ No `new Math()`
+
+---
+
+# 🎯 2. Math Constants 📌
+
+These are fixed values:
+
+```js
+Math.PI       // 3.14159...
+Math.E        // 2.718 (Euler’s number)
+Math.SQRT2    // √2
+Math.SQRT1_2  // √(1/2)
+Math.LN2      // ln(2)
+Math.LN10     // ln(10)
+```
+
+Example:
+
+```js
+console.log(Math.PI * 2); // circle calculations
+```
+
+---
+
+# 🎯 3. Rounding Functions 🔢
+
+## 🔹 `Math.round()`
+
+👉 Nearest integer
+
+```js
+Math.round(4.4) // 4
+Math.round(4.5) // 5
+```
+
+---
+
+## 🔹 `Math.floor()`
+
+👉 Always down
+
+```js
+Math.floor(4.9) // 4
+```
+
+---
+
+## 🔹 `Math.ceil()`
+
+👉 Always up
+
+```js
+Math.ceil(4.1) // 5
+```
+
+---
+
+## 🔹 `Math.trunc()`
+
+👉 Remove decimal part
+
+```js
+Math.trunc(4.9) // 4
+Math.trunc(-4.9) // -4
+```
+
+---
+
+# 🎯 4. Power & Root Functions ⚡
+
+## 🔹 `Math.pow(base, exponent)`
+
+```js
+Math.pow(2, 3) // 8
+```
+
+👉 Shortcut:
+
+```js
+2 ** 3 // 8
+```
+
+---
+
+## 🔹 `Math.sqrt()`
+
+```js
+Math.sqrt(16) // 4
+```
+
+---
+
+## 🔹 `Math.cbrt()`
+
+```js
+Math.cbrt(27) // 3
+```
+
+---
+
+# 🎯 5. Absolute & Sign 🧮
+
+## 🔹 `Math.abs()`
+
+```js
+Math.abs(-10) // 10
+```
+
+---
+
+## 🔹 `Math.sign()`
+
+```js
+Math.sign(-5) // -1
+Math.sign(5)  // 1
+Math.sign(0)  // 0
+```
+
+---
+
+# 🎯 6. Min & Max 🔍
+
+```js
+Math.min(1, 2, 3) // 1
+Math.max(1, 2, 3) // 3
+```
+
+👉 With array:
+
+```js
+let arr = [5, 10, 2];
+Math.max(...arr) // 10
+```
+
+---
+
+# 🎯 7. Random Numbers 🎲
+
+```js
+Math.random()
+```
+
+👉 Range:
+
+```
+0 ≤ value < 1
+```
+
+✔ Random integer:
+
+```js
+Math.floor(Math.random() * 10)
+```
+
+---
+
+# 🎯 8. Logarithmic Functions 📊
+
+## 🔹 `Math.log()` (natural log)
+
+```js
+Math.log(1) // 0
+```
+
+---
+
+## 🔹 `Math.log10()`
+
+```js
+Math.log10(100) // 2
+```
+
+---
+
+## 🔹 `Math.log2()`
+
+```js
+Math.log2(8) // 3
+```
+
+---
+
+# 🎯 9. Trigonometric Functions 📐
+
+(All values in radians ⚠️)
+
+```js
+Math.sin(Math.PI / 2) // 1
+Math.cos(0)           // 1
+Math.tan(Math.PI / 4) // 1
+```
+
+---
+
+## 🔹 Inverse Trig
+
+```js
+Math.asin(1)
+Math.acos(1)
+Math.atan(1)
+```
+
+---
+
+# 🎯 10. Other Important Functions 🔥
+
+## 🔹 `Math.floor vs Math.trunc`
+
+```js
+Math.floor(-4.9) // -5
+Math.trunc(-4.9) // -4
+```
+
+---
+
+## 🔹 `Math.hypot()` (distance)
+
+```js
+Math.hypot(3, 4) // 5
+```
+
+---
+
+## 🔹 `Math.fround()` (32-bit float)
+
+```js
+Math.fround(1.337)
+```
+
+---
+
+## 🔹 `Math.clz32()` (leading zeros)
+
+```js
+Math.clz32(1) // 31
+```
+
+---
+
+## 🔹 `Math.imul()` (fast multiplication)
+
+```js
+Math.imul(2, 4) // 8
+```
+
+---
+
+# 🎯 11. Real-World Use Cases 💡
+
+## 🔹 OTP Generator
+
+```js
+Math.floor(1000 + Math.random() * 9000)
+```
+
+---
+
+## 🔹 Price Rounding
+
+```js
+Math.ceil(price)
+```
+
+---
+
+## 🔹 Distance Calculation
+
+```js
+Math.hypot(x2 - x1, y2 - y1)
+```
+
+---
+
+# 🎯 12. Interview Traps ⚠️
+
+## ❓ Difference: `floor` vs `ceil`
+
+| Function | Behavior |
+| -------- | -------- |
+| floor    | down     |
+| ceil     | up       |
+
+---
+
+## ❓ Why not use `round` for random?
+
+👉 Uneven probability
+
+---
+
+## ❓ `NaN` case
+
+```js
+Math.sqrt(-1) // NaN
+```
+
+---
+
+# 🎯 13. Advanced Tricks 🔥
+
+## 🔹 Clamp value between min & max
+
+```js
+function clamp(val, min, max) {
+  return Math.min(Math.max(val, min), max);
+}
+```
+
+---
+
+## 🔹 Check if integer
+
+```js
+Number.isInteger(5) // true
+```
+
+---
+
+## 🔹 Convert degrees → radians
+
+```js
+deg * (Math.PI / 180)
+```
+
+---
+
+# 🎯 14. Complete Cheat Sheet 🚀
+
+| Category | Functions                 |
+| -------- | ------------------------- |
+| Rounding | round, floor, ceil, trunc |
+| Power    | pow, sqrt, cbrt           |
+| Random   | random                    |
+| Log      | log, log2, log10          |
+| Trig     | sin, cos, tan             |
+| Utility  | min, max, abs, sign       |
+
+---
+
+# 🎯 Final Summary 🧠
+
+✔ `Math` is built-in
+✔ Covers all numeric operations
+✔ `random()` → 0–1
+✔ Use `floor()` for integers
+✔ Trig uses radians ⚠️
+✔ Powerful for games, finance, algorithms
+
+--
