@@ -777,3 +777,363 @@ btn.addEventListener("click", () => {
 * Use event delegation for performance
 * Use `once` for one-time actions
 _______________________________________________________________________________________________________________________________________________________
+#######################################################################################################################################################
+# 🔥 1. Multiple Listeners Order
+
+```javascript
+let btn = document.querySelector("button");
+
+btn.addEventListener("click", () => console.log("First"));
+btn.addEventListener("click", () => console.log("Second"));
+```
+
+### ❓ Output?
+
+```
+First
+Second
+```
+
+### 💡 Explanation:
+
+* Listeners run in the order they were added
+
+👉 हिंदी:
+जिस order में add किए, उसी order में चलेंगे
+
+---
+
+# 🔥 2. onclick vs addEventListener
+
+```javascript
+btn.onclick = () => console.log("A");
+btn.onclick = () => console.log("B");
+```
+
+### ❓ Output?
+
+```
+B
+```
+
+```javascript
+btn.addEventListener("click", () => console.log("A"));
+btn.addEventListener("click", () => console.log("B"));
+```
+
+### ❓ Output?
+
+```
+A
+B
+```
+
+👉 हिंदी:
+onclick overwrite करता है, addEventListener नहीं
+
+---
+
+# 🔥 3. removeEventListener Trap ⚠️
+
+```javascript
+btn.addEventListener("click", () => console.log("Clicked"));
+btn.removeEventListener("click", () => console.log("Clicked"));
+```
+
+### ❓ Will it remove?
+
+❌ NO
+
+### 💡 Why?
+
+Different function references
+
+👉 Correct way:
+
+```javascript
+function handleClick() {
+    console.log("Clicked");
+}
+
+btn.addEventListener("click", handleClick);
+btn.removeEventListener("click", handleClick);
+```
+
+👉 हिंदी:
+same function reference होना जरूरी है
+
+---
+
+# 🔥 4. Event Bubbling Order
+
+```html
+<div id="parent">
+  <button id="child">Click</button>
+</div>
+```
+
+```javascript
+parent.addEventListener("click", () => console.log("Parent"));
+child.addEventListener("click", () => console.log("Child"));
+```
+
+### ❓ Output?
+
+```
+Child
+Parent
+```
+
+👉 हिंदी:
+event नीचे से ऊपर जाता है
+
+---
+
+# 🔥 5. stopPropagation Trick
+
+```javascript
+child.addEventListener("click", (e) => {
+    e.stopPropagation();
+    console.log("Child");
+});
+
+parent.addEventListener("click", () => console.log("Parent"));
+```
+
+### ❓ Output?
+
+```
+Child
+```
+
+👉 हिंदी:
+parent तक event नहीं जाएगा
+
+---
+
+# 🔥 6. Capturing vs Bubbling
+
+```javascript
+parent.addEventListener("click", () => console.log("Parent"), true);
+child.addEventListener("click", () => console.log("Child"));
+```
+
+### ❓ Output?
+
+```
+Parent
+Child
+```
+
+👉 हिंदी:
+capture में ऊपर से नीचे
+
+---
+
+# 🔥 7. event.target vs this
+
+```javascript
+parent.addEventListener("click", function(e) {
+    console.log(e.target);
+    console.log(this);
+});
+```
+
+👉 Click child
+
+### ❓ Output?
+
+* `e.target` → child
+* `this` → parent
+
+👉 हिंदी:
+
+* target = actual clicked
+* this = listener वाला element
+
+---
+
+# 🔥 8. Event Delegation Trick
+
+```javascript
+document.querySelector("ul").addEventListener("click", (e) => {
+    console.log(e.target.tagName);
+});
+```
+
+👉 Click on `<li>`
+
+### ❓ Output?
+
+```
+LI
+```
+
+👉 हिंदी:
+event parent पर है, लेकिन target child है
+
+---
+
+# 🔥 9. once Option
+
+```javascript
+btn.addEventListener("click", () => console.log("Clicked"), { once: true });
+```
+
+👉 Click 3 times
+
+### ❓ Output?
+
+```
+Clicked
+```
+
+👉 हिंदी:
+एक बार ही चलेगा
+
+---
+
+# 🔥 10. setTimeout + Event Listener
+
+```javascript
+btn.addEventListener("click", () => {
+    setTimeout(() => console.log("A"), 0);
+    console.log("B");
+});
+```
+
+### ❓ Output?
+
+```
+B
+A
+```
+
+👉 हिंदी:
+
+* sync पहले
+* async बाद में
+
+---
+
+# 🔥 11. Nested Events
+
+```javascript
+btn.addEventListener("click", () => {
+    console.log("1");
+
+    btn.addEventListener("click", () => console.log("2"));
+});
+```
+
+👉 Click 2 times
+
+### ❓ Output?
+
+```
+1
+1
+2
+```
+
+👉 हिंदी:
+
+* हर click पर नया listener add हो रहा है 😱
+
+---
+
+# 🔥 12. Passive Listener Trick
+
+```javascript
+window.addEventListener("scroll", (e) => {
+    e.preventDefault();
+}, { passive: true });
+```
+
+### ❓ Will preventDefault work?
+
+❌ NO
+
+👉 हिंदी:
+passive = browser को fast scrolling चाहिए
+
+---
+
+# 🔥 13. Prevent Default
+
+```html
+<a href="https://google.com" id="link">Go</a>
+```
+
+```javascript
+link.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log("Stopped");
+});
+```
+
+### ❓ What happens?
+
+👉 Link will NOT open
+
+---
+
+# 🔥 14. Multiple stopPropagation
+
+```javascript
+child.addEventListener("click", (e) => {
+    console.log("Child");
+    e.stopPropagation();
+});
+
+parent.addEventListener("click", () => console.log("Parent"));
+document.addEventListener("click", () => console.log("Document"));
+```
+
+### ❓ Output?
+
+```
+Child
+```
+
+👉 हिंदी:
+event वहीं रुक गया
+
+---
+
+# 🔥 15. this in Arrow Function ⚠️
+
+```javascript
+btn.addEventListener("click", () => {
+    console.log(this);
+});
+```
+
+### ❓ What is this?
+
+👉 NOT button ❌
+👉 window / undefined (strict mode)
+
+👉 Correct:
+
+```javascript
+btn.addEventListener("click", function() {
+    console.log(this); // button
+});
+```
+
+👉 हिंदी:
+arrow function में this change हो जाता है
+
+---
+
+# 🧠 Final Interview Tips
+
+---
+
+### 💡 Always remember:
+
+* `event.target` vs `this`
+* bubbling vs capturing
+* function reference in removeEventListener
+* async behavior (setTimeout, Promise)
