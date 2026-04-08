@@ -1,0 +1,357 @@
+________________________________________________________________________________________________________________________________________________________
+# 🌳 What is DOM?
+
+### ✅ Definition (English)
+
+The **DOM** is a programming interface for web documents.
+It represents the HTML page as a **tree structure of objects** that JavaScript can manipulate.
+
+### ✅ हिंदी में
+
+DOM (Document Object Model) एक ऐसा सिस्टम है जो HTML को 
+**tree (पेड़ जैसी structure)** में बदल देता है, ताकि JavaScript उसे बदल सके।
+
+---
+
+# 🌳 DOM Structure (Tree Representation)
+
+Example HTML:
+
+```html
+<html>
+  <body>
+    <h1>Hello</h1>
+    <p>Welcome</p>
+  </body>
+</html>
+```
+
+DOM Tree:
+
+```
+Document
+ └── html
+      └── body
+           ├── h1
+           └── p
+```
+
+👉 हर element = **Node (नोड)**
+
+---
+
+# 🔹 Types of Nodes
+
+| Type           | Example     | Meaning (Hindi)     |
+| -------------- | ----------- | ------------------- |
+| Element Node   | `<h1>`      | HTML element        |
+| Text Node      | "Hello"     | Text inside element |
+| Attribute Node | class="abc" | Attribute           |
+| Comment Node   | <!-- hi --> | Comment             |
+
+---
+
+# 🔹 Accessing DOM Elements
+
+## 1. getElementById()
+
+```html
+<h1 id="title">Hello</h1>
+```
+
+```javascript
+let el = document.getElementById("title");
+console.log(el);
+```
+
+👉 हिंदी: ID से element पकड़ना
+
+---
+
+## 2. getElementsByClassName()
+
+```html
+<p class="text">Hi</p>
+```
+
+```javascript
+let items = document.getElementsByClassName("text");
+```
+
+👉 Returns HTMLCollection (array-like)
+
+---
+
+## 3. querySelector() ⭐ (Most Used)
+
+```javascript
+document.querySelector("p");       // first <p>
+document.querySelector(".text");   // class
+document.querySelector("#title");  // id
+```
+
+👉 हिंदी: CSS selector से element ढूंढना
+
+---
+
+## 4. querySelectorAll()
+
+```javascript
+let all = document.querySelectorAll("p");
+```
+
+👉 Returns NodeList
+
+---
+
+# 🔹 Changing Content
+
+## innerText
+
+```javascript
+el.innerText = "New Text";
+```
+
+👉 सिर्फ text बदलता है
+
+---
+
+## innerHTML
+
+```javascript
+el.innerHTML = "<b>Bold</b>";
+```
+
+👉 HTML भी डाल सकते हैं
+
+---
+
+## Example:
+
+```html
+<p id="demo">Hello</p>
+```
+
+```javascript
+document.getElementById("demo").innerText = "Namaste";
+```
+
+---
+
+# 🔹 Changing Attributes
+
+```javascript
+let img = document.querySelector("img");
+img.src = "new.jpg";
+```
+
+OR
+
+```javascript
+img.setAttribute("src", "new.jpg");
+```
+
+👉 हिंदी: attribute बदलना
+
+---
+
+# 🔹 Styling with DOM
+
+```javascript
+let box = document.querySelector("div");
+box.style.backgroundColor = "red";
+box.style.color = "white";
+```
+
+👉 हिंदी: CSS को JS से बदलना
+
+---
+
+# 🔹 Creating Elements
+
+```javascript
+let newEl = document.createElement("p");
+newEl.innerText = "I am new";
+```
+
+👉 हिंदी: नया element बनाना
+
+---
+
+# 🔹 Adding Elements
+
+```javascript
+document.body.appendChild(newEl);
+```
+
+---
+
+## Example:
+
+```javascript
+let li = document.createElement("li");
+li.innerText = "Item 1";
+
+document.querySelector("ul").appendChild(li);
+```
+
+---
+
+# 🔹 Removing Elements
+
+```javascript
+let el = document.querySelector("p");
+el.remove();
+```
+
+---
+
+# 🔹 Event Handling (Very Important 🔥)
+
+## Click Event
+
+```javascript
+let btn = document.querySelector("button");
+
+btn.addEventListener("click", function() {
+    alert("Button clicked!");
+});
+```
+
+👉 हिंदी: जब user कुछ करता है (click, hover), उसे event कहते हैं
+
+---
+
+## Example:
+
+```html
+<button id="btn">Click Me</button>
+```
+
+```javascript
+document.getElementById("btn").onclick = function() {
+    console.log("Clicked!");
+};
+```
+
+---
+
+# 🔹 Traversing DOM (Moving in Tree)
+
+## Parent
+
+```javascript
+el.parentElement;
+```
+
+## Children
+
+```javascript
+el.children;
+```
+
+## Siblings
+
+```javascript
+el.nextElementSibling;
+el.previousElementSibling;
+```
+
+---
+
+# 🔹 DOM Manipulation Example (Real Life)
+
+```html
+<ul id="list"></ul>
+<button id="add">Add Item</button>
+```
+
+```javascript
+let btn = document.getElementById("add");
+
+btn.addEventListener("click", function() {
+    let li = document.createElement("li");
+    li.innerText = "New Item";
+    document.getElementById("list").appendChild(li);
+});
+```
+
+👉 हर click पर नया item add होगा
+
+---
+
+# 🔹 Difference: HTML vs DOM
+
+| HTML            | DOM                |
+| --------------- | ------------------ |
+| Static          | Dynamic            |
+| Written in file | Created in browser |
+| Structure       | Objects            |
+
+👉 हिंदी:
+
+* HTML = लिखा हुआ code
+* DOM = browser में बना live structure
+
+---
+
+# 🔹 Important Concepts
+
+### 1. DOM is LIVE
+
+Changes reflect instantly
+
+### 2. Everything is Object
+
+👉 You can do:
+
+```javascript
+document.body.style.backgroundColor = "yellow";
+```
+
+---
+
+# 🔹 Advanced Example 🔥
+
+```html
+<input id="input" type="text">
+<button id="btn">Add</button>
+<ul id="list"></ul>
+```
+
+```javascript
+let btn = document.getElementById("btn");
+
+btn.addEventListener("click", function() {
+    let value = document.getElementById("input").value;
+
+    let li = document.createElement("li");
+    li.innerText = value;
+
+    document.getElementById("list").appendChild(li);
+});
+```
+
+👉 User input → list में add
+
+---
+
+# 🧠 Quick Summary
+
+* DOM = HTML का tree structure
+* JS से DOM को change कर सकते हैं
+* Use:
+
+  * select elements
+  * change content
+  * add/remove elements
+  * handle events
+
+---
+
+# 💡 Pro Tips
+
+* Always prefer `querySelector`
+* Use `addEventListener` (modern way)
+* Avoid too many DOM updates (performance)
+_______________________________________________________________________________________________________________________________________________________
