@@ -1,0 +1,300 @@
+_______________________________________________________________________________________________________________________________________________________
+# 🔥 Basic DOM Interview Questions
+
+## 1. What is DOM?
+
+### ✅ Answer:
+
+**English:**
+DOM (Document Object Model) is a tree-like structure representing HTML elements as objects, allowing JavaScript to manipulate them.
+
+**Hindi:**
+DOM एक tree structure है जो HTML elements को objects में बदल देता है ताकि JavaScript उन्हें बदल सके।
+
+---
+
+## 2. Difference between HTML and DOM?
+
+| HTML                 | DOM                    |
+| -------------------- | ---------------------- |
+| Static               | Dynamic                |
+| Written code         | Browser representation |
+| Cannot change itself | Can be changed via JS  |
+
+👉 हिंदी:
+HTML = static code
+DOM = live structure (जिसे JS बदल सकता है)
+
+---
+
+## 3. What is a Node in DOM?
+
+👉 Every element, attribute, or text is a **node**
+
+**Example:**
+
+```html
+<p>Hello</p>
+```
+
+* `<p>` → element node
+* "Hello" → text node
+
+---
+
+## 4. Difference: getElementById vs querySelector
+
+| Feature     | getElementById | querySelector   |
+| ----------- | -------------- | --------------- |
+| Speed       | Faster         | Slightly slower |
+| Selector    | Only ID        | CSS selectors   |
+| Flexibility | Less           | More            |
+
+👉 Hindi:
+querySelector ज्यादा powerful है
+
+---
+
+# 🔥 Intermediate DOM Questions
+
+## 5. Difference: innerText vs innerHTML vs textContent
+
+| Property    | Meaning            |
+| ----------- | ------------------ |
+| innerText   | Visible text only  |
+| textContent | All text           |
+| innerHTML   | Includes HTML tags |
+
+**Example:**
+
+```javascript
+el.innerHTML = "<b>Hello</b>";
+```
+
+👉 हिंदी:
+innerHTML HTML को भी समझता है
+
+---
+
+## 6. What is Event Bubbling?
+
+### ✅ Answer:
+
+Event starts from child → goes to parent
+
+```javascript
+child → parent → document
+```
+
+👉 हिंदी:
+event नीचे से ऊपर जाता है
+
+---
+
+## 7. What is Event Capturing?
+
+Opposite of bubbling
+
+```javascript
+document → parent → child
+```
+
+👉 हिंदी:
+event ऊपर से नीचे आता है
+
+---
+
+## 8. What is Event Delegation?
+
+### ✅ Concept:
+
+Using a parent to handle events for children
+
+```javascript
+document.querySelector("ul").addEventListener("click", function(e) {
+    if(e.target.tagName === "LI") {
+        console.log("Clicked", e.target);
+    }
+});
+```
+
+👉 हिंदी:
+एक parent से multiple children handle करना
+
+---
+
+## 9. Difference: HTMLCollection vs NodeList
+
+| Feature | HTMLCollection | NodeList     |
+| ------- | -------------- | ------------ |
+| Live    | Yes            | No (mostly)  |
+| Methods | Limited        | More methods |
+
+---
+
+## 10. What is document object?
+
+👉 Root object of DOM
+
+```javascript
+document.body
+document.title
+```
+
+👉 हिंदी:
+document = पूरे page का entry point
+
+---
+
+# 🔥 Advanced DOM Questions
+
+## 11. How to create and add elements?
+
+```javascript
+let el = document.createElement("div");
+el.innerText = "Hello";
+document.body.appendChild(el);
+```
+
+---
+
+## 12. Difference: append vs appendChild
+
+| append         | appendChild |
+| -------------- | ----------- |
+| Multiple items | Only one    |
+| Text allowed   | Only nodes  |
+
+---
+
+## 13. How to remove elements?
+
+```javascript
+element.remove();
+```
+
+OR
+
+```javascript
+parent.removeChild(child);
+```
+
+---
+
+## 14. What is closest() method?
+
+```javascript
+el.closest("div");
+```
+
+👉 Finds nearest parent
+
+👉 हिंदी:
+सबसे पास वाला matching parent
+
+---
+
+## 15. What is classList?
+
+```javascript
+el.classList.add("active");
+el.classList.remove("active");
+el.classList.toggle("active");
+```
+
+👉 हिंदी:
+CSS class manage करने के लिए
+
+---
+
+# 🔥 Scenario-Based Questions (Very Important 🔥)
+
+## 16. Add item to list on button click
+
+```javascript
+btn.addEventListener("click", function() {
+    let li = document.createElement("li");
+    li.innerText = "New Item";
+    list.appendChild(li);
+});
+```
+
+---
+
+## 17. Change background color on click
+
+```javascript
+document.body.addEventListener("click", function() {
+    document.body.style.backgroundColor = "yellow";
+});
+```
+
+---
+
+## 18. Get input value and show it
+
+```javascript
+let value = document.getElementById("input").value;
+console.log(value);
+```
+
+---
+
+# 🔥 Tricky Interview Questions
+
+## 19. Why is DOM manipulation slow?
+
+👉 Because it updates UI (reflow + repaint)
+
+👉 हिंदी:
+Browser को बार-बार render करना पड़ता है
+
+---
+
+## 20. What is reflow and repaint?
+
+* **Reflow:** layout change
+* **Repaint:** visual change
+
+---
+
+## 21. What is defer in script?
+
+```html
+<script src="app.js" defer></script>
+```
+
+👉 Loads JS after HTML parsing
+
+---
+
+## 22. Difference: onclick vs addEventListener
+
+| onclick     | addEventListener  |
+| ----------- | ----------------- |
+| One handler | Multiple handlers |
+| Old method  | Modern method     |
+
+---
+
+# 🧠 Rapid Fire Questions
+
+* What is DOM tree?
+* What is parentNode vs parentElement?
+* Difference: children vs childNodes?
+* What is nextSibling vs nextElementSibling?
+* What is dataset?
+* What is fragment (DocumentFragment)?
+
+---
+
+# 💡 Bonus Tip for Interview
+
+👉 Always explain with example:
+
+Instead of saying:
+❌ "DOM is used to manipulate elements"
+
+Say:
+✅ "We use DOM to dynamically update UI like adding items to a cart without reloading the page"
+_______________________________________________________________________________________________________________________________________________________
