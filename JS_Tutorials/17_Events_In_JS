@@ -1,0 +1,779 @@
+________________________________________________________________________________________________________________________________________________________
+######################################################  EVENT_IN_JS  ################################################################################
+# 🎯 PART 1: EVENTS IN JAVASCRIPT
+
+---
+
+## 🔹 What is an Event?
+
+### ✅ English:
+
+An **event** is an action that happens in the browser (by user or system).
+
+Examples:
+
+* Click
+* Typing
+* Hover
+* Page load
+
+### ✅ हिंदी:
+
+Event मतलब **कोई भी action** जो user या browser करता है
+
+👉 जैसे:
+
+* Click करना
+* Typing करना
+* Page load होना
+
+---
+
+## 🔹 Common Events
+
+| Event     | Description  |
+| --------- | ------------ |
+| click     | Button click |
+| input     | Typing       |
+| change    | Value change |
+| submit    | Form submit  |
+| mouseover | Mouse hover  |
+| keydown   | Key press    |
+
+---
+
+## 🔹 How to Add Events
+
+---
+
+### ✅ 1. Inline HTML (Not Recommended ❌)
+
+```html
+<button onclick="alert('Clicked')">Click</button>
+```
+
+👉 Old method
+
+---
+
+### ✅ 2. Using JS (onclick)
+
+```javascript
+let btn = document.getElementById("btn");
+
+btn.onclick = function() {
+    console.log("Clicked");
+};
+```
+
+---
+
+### ✅ 3. addEventListener ⭐ (Best Method)
+
+```javascript
+btn.addEventListener("click", function() {
+    console.log("Clicked");
+});
+```
+
+👉 Hindi: यही modern तरीका है
+
+---
+
+## 🔹 Event Object (Very Important 🔥)
+
+```javascript
+btn.addEventListener("click", function(event) {
+    console.log(event);
+});
+```
+
+### Contains:
+
+* `event.target` → clicked element
+* `event.type` → event name
+* `event.clientX` → mouse position
+
+👉 हिंदी: event object में सारी जानकारी होती है
+
+---
+
+## 🔹 Example
+
+```javascript
+document.addEventListener("click", function(e) {
+    console.log("Clicked at:", e.clientX, e.clientY);
+});
+```
+
+---
+
+# 🔥 EVENT FLOW (Interview Favorite)
+
+---
+
+## 🔹 1. Event Bubbling
+
+👉 Child → Parent → Document
+
+```javascript
+child → parent → document
+```
+
+### Example:
+
+```javascript
+div.addEventListener("click", () => console.log("DIV"));
+button.addEventListener("click", () => console.log("BUTTON"));
+```
+
+👉 Click button → output:
+
+```
+BUTTON
+DIV
+```
+
+---
+
+### Hindi:
+
+Event नीचे से ऊपर जाता है
+
+---
+
+## 🔹 2. Event Capturing
+
+👉 Parent → Child
+
+```javascript
+div.addEventListener("click", handler, true);
+```
+
+👉 Third parameter = `true`
+
+---
+
+### Hindi:
+
+Event ऊपर से नीचे आता है
+
+---
+
+## 🔹 Stop Propagation
+
+```javascript
+event.stopPropagation();
+```
+
+👉 Stops bubbling
+
+---
+
+# 🔥 EVENT DELEGATION (VERY IMPORTANT 🔥)
+
+---
+
+## 🔹 Concept:
+
+Parent handles child events
+
+### Example:
+
+```javascript
+document.querySelector("ul").addEventListener("click", function(e) {
+    if(e.target.tagName === "LI") {
+        console.log("Clicked:", e.target.innerText);
+    }
+});
+```
+
+---
+
+### Why use it?
+
+✅ Better performance
+✅ Works for dynamic elements
+
+---
+
+### Hindi:
+
+Parent से multiple elements handle करना
+
+---
+
+# 🎯 PART 2: EVENT LOOP (CORE JS 🔥🔥)
+
+---
+
+## 🔹 What is Event Loop?
+
+### ✅ English:
+
+Event Loop is a mechanism that handles **asynchronous operations** in JavaScript.
+
+### ✅ Hindi:
+
+Event Loop JavaScript में **async code को handle करता है**
+
+---
+
+## 🔹 JavaScript Nature
+
+👉 JavaScript is:
+
+* Single-threaded
+* Non-blocking
+
+👉 हिंदी:
+JS एक time पर एक काम करता है, लेकिन async से smart बनता है
+
+---
+
+# 🔹 Important Components
+
+---
+
+## 1. Call Stack
+
+👉 Executes functions
+
+```javascript
+function a() {
+    console.log("A");
+}
+a();
+```
+
+---
+
+## 2. Web APIs
+
+👉 Browser handles:
+
+* setTimeout
+* DOM events
+* fetch
+
+---
+
+## 3. Callback Queue
+
+👉 Stores async callbacks
+
+---
+
+## 4. Event Loop
+
+👉 Moves tasks to call stack
+
+---
+
+# 🔥 Flow Diagram
+
+```
+Call Stack → Web API → Callback Queue → Event Loop → Call Stack
+```
+
+---
+
+# 🔥 Example 1 (Very Important)
+
+```javascript
+console.log("Start");
+
+setTimeout(() => {
+    console.log("Timeout");
+}, 0);
+
+console.log("End");
+```
+
+### Output:
+
+```
+Start
+End
+Timeout
+```
+
+---
+
+### Explanation:
+
+👉 Hindi:
+
+* "Start" → तुरंत
+* setTimeout → Web API में गया
+* "End" → execute
+* फिर event loop → callback चलाया
+
+---
+
+# 🔥 Example 2 (with function)
+
+```javascript
+function greet() {
+    console.log("Hello");
+}
+
+setTimeout(greet, 2000);
+
+console.log("Bye");
+```
+
+### Output:
+
+```
+Bye
+Hello   (after 2 sec)
+```
+
+---
+
+# 🔥 Microtask vs Macrotask (Advanced 🔥)
+
+---
+
+## 🔹 Microtasks (High Priority)
+
+* Promise.then
+* queueMicrotask
+
+---
+
+## 🔹 Macrotasks
+
+* setTimeout
+* setInterval
+
+---
+
+## 🔹 Example:
+
+```javascript
+console.log("Start");
+
+setTimeout(() => console.log("Timeout"));
+
+Promise.resolve().then(() => console.log("Promise"));
+
+console.log("End");
+```
+
+---
+
+### Output:
+
+```
+Start
+End
+Promise
+Timeout
+```
+
+---
+
+### Hindi:
+
+👉 Promise पहले चलता है (high priority)
+
+---
+
+# 🔥 Real-Life Analogy
+
+👉 Restaurant 🍽️
+
+* Call Stack → Chef
+* Web API → Assistant
+* Queue → Orders
+* Event Loop → Manager
+
+---
+
+# 🔥 Common Interview Questions
+
+---
+
+## 1. Why JS is single-threaded?
+
+👉 Simplicity + browser safety
+
+---
+
+## 2. Why async is needed?
+
+👉 To avoid blocking UI
+
+---
+
+## 3. setTimeout(0) runs immediately?
+
+❌ No
+👉 Goes to queue first
+
+---
+
+## 4. Promise vs setTimeout?
+
+👉 Promise = higher priority
+
+---
+
+# 🧠 Final Summary
+
+---
+
+## Events:
+
+* User/browser actions
+* Handled using addEventListener
+* Bubbling & capturing
+
+---
+
+## Event Loop:
+
+* Handles async code
+* Uses queue + stack
+* Microtask > Macrotask
+
+---
+
+# 💡 Pro Tips (Interview Gold)
+
+* Always mention **Call Stack + Queue**
+* Explain with example (very important)
+* Use words:
+
+  * "Non-blocking"
+  * "Single-threaded"
+  * "Asynchronous"
+_______________________________________________________________________________________________________________________________________________________
+######################################################  EVENT LISTENER  ################################################################################
+
+# 🎯 What is an Event Listener?
+
+### ✅ English:
+
+An **Event Listener** is a function that “listens” for an event (like click, hover, typing) and executes code when that event occurs.
+
+### ✅ हिंदी:
+
+Event Listener एक function होता है जो किसी event (जैसे click, typing) को सुनता है और उसके होने पर code चलाता है।
+
+---
+
+# 🔹 Syntax of addEventListener ⭐
+
+```javascript
+element.addEventListener(event, callback, options);
+```
+
+### Example:
+
+```javascript
+let btn = document.querySelector("button");
+
+btn.addEventListener("click", function() {
+    console.log("Button clicked!");
+});
+```
+
+---
+
+# 🔹 Breakdown
+
+| Part     | Meaning            |
+| -------- | ------------------ |
+| event    | "click", "input"   |
+| callback | function to run    |
+| options  | bubbling/capturing |
+
+---
+
+# 🔥 Why use addEventListener?
+
+| Feature                  | Benefit |
+| ------------------------ | ------- |
+| Multiple handlers        | Yes     |
+| Cleaner code             | Yes     |
+| Control (capture/bubble) | Yes     |
+
+---
+
+# 🔥 Basic Examples
+
+---
+
+## 1. Click Event
+
+```javascript
+btn.addEventListener("click", () => {
+    alert("Clicked!");
+});
+```
+
+---
+
+## 2. Input Event
+
+```javascript
+let input = document.querySelector("input");
+
+input.addEventListener("input", (e) => {
+    console.log(e.target.value);
+});
+```
+
+👉 हिंदी: typing करते ही value मिलती है
+
+---
+
+## 3. Mouse Events
+
+```javascript
+box.addEventListener("mouseover", () => {
+    box.style.backgroundColor = "red";
+});
+```
+
+---
+
+# 🔥 Event Object (Very Important)
+
+```javascript
+btn.addEventListener("click", function(event) {
+    console.log(event);
+});
+```
+
+### Useful Properties:
+
+| Property      | Meaning         |
+| ------------- | --------------- |
+| event.target  | clicked element |
+| event.type    | event name      |
+| event.clientX | mouse X         |
+| event.key     | key pressed     |
+
+---
+
+## Example:
+
+```javascript
+document.addEventListener("click", (e) => {
+    console.log("Clicked on:", e.target);
+});
+```
+
+---
+
+# 🔥 Multiple Event Listeners
+
+```javascript
+btn.addEventListener("click", () => console.log("First"));
+btn.addEventListener("click", () => console.log("Second"));
+```
+
+👉 Output:
+
+```
+First
+Second
+```
+
+---
+
+# 🔥 Removing Event Listener
+
+```javascript
+function handleClick() {
+    console.log("Clicked");
+}
+
+btn.addEventListener("click", handleClick);
+
+// remove
+btn.removeEventListener("click", handleClick);
+```
+
+👉 Important: same function reference चाहिए
+
+---
+
+# 🔥 Event Bubbling vs Capturing
+
+---
+
+## Bubbling (default)
+
+```javascript
+child → parent → document
+```
+
+```javascript
+div.addEventListener("click", () => console.log("DIV"));
+button.addEventListener("click", () => console.log("BUTTON"));
+```
+
+👉 Output:
+
+```
+BUTTON
+DIV
+```
+
+---
+
+## Capturing
+
+```javascript
+div.addEventListener("click", handler, true);
+```
+
+👉 हिंदी: ऊपर से नीचे
+
+---
+
+# 🔥 stopPropagation()
+
+```javascript
+btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+});
+```
+
+👉 Stops event flow
+
+---
+
+# 🔥 Event Delegation (Important 🔥)
+
+---
+
+## Problem:
+
+Dynamic elements don't have listeners
+
+## Solution:
+
+Use parent
+
+```javascript
+document.querySelector("ul").addEventListener("click", function(e) {
+    if(e.target.tagName === "LI") {
+        console.log("Clicked:", e.target.innerText);
+    }
+});
+```
+
+---
+
+### Hindi:
+
+Parent से child events handle करना
+
+---
+
+# 🔥 Options in addEventListener
+
+```javascript
+element.addEventListener("click", handler, {
+    once: true,
+    capture: true
+});
+```
+
+---
+
+| Option  | Meaning              |
+| ------- | -------------------- |
+| once    | runs only once       |
+| capture | use capturing        |
+| passive | improves performance |
+
+---
+
+# 🔥 Keyboard Events
+
+```javascript
+document.addEventListener("keydown", (e) => {
+    console.log(e.key);
+});
+```
+
+---
+
+# 🔥 Real Project Example 🔥
+
+---
+
+## Add Task Button
+
+```html
+<input id="task">
+<button id="add">Add</button>
+<ul id="list"></ul>
+```
+
+```javascript
+let btn = document.getElementById("add");
+
+btn.addEventListener("click", () => {
+    let value = document.getElementById("task").value;
+
+    let li = document.createElement("li");
+    li.innerText = value;
+
+    document.getElementById("list").appendChild(li);
+});
+```
+
+---
+
+# 🔥 Common Interview Questions
+
+---
+
+## 1. Difference: onclick vs addEventListener
+
+| onclick     | addEventListener |
+| ----------- | ---------------- |
+| One handler | Multiple         |
+| Old         | Modern           |
+
+---
+
+## 2. Why removeEventListener not working?
+
+👉 Because function reference different होता है
+
+---
+
+## 3. What is event.target vs this?
+
+* `event.target` → actual clicked
+* `this` → attached element
+
+---
+
+# 🧠 Summary
+
+---
+
+* Event Listener = event + function
+* Use `addEventListener` (best practice)
+* Supports bubbling & capturing
+* Can handle multiple events
+* Used everywhere in web apps
+
+---
+
+# 💡 Pro Tips
+
+* Always use `addEventListener`
+* Use event delegation for performance
+* Use `once` for one-time actions
+_______________________________________________________________________________________________________________________________________________________
