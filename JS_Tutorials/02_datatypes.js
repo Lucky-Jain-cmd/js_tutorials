@@ -66,7 +66,7 @@ typeof 10        // "number"
 typeof "Hello"   // "string"
 typeof true      // "boolean"
 typeof undefined // "undefined"
-typeof null      // "object" (JavaScript bug)
+typeof null      // "object" (JavaScript bug)   ....This behavior has been kept for backward compatibility...
 typeof {}        // "object"
 typeof []        // "object"
 typeof function(){} // "function"
