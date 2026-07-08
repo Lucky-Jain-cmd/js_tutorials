@@ -291,6 +291,25 @@ Browser को बार-बार render करना पड़ता है
 # 💡 Bonus Tip for Interview
 
 👉 Always explain with example:
+⭐ Super Interview Revision (Remember These)
+Topic	One-Line Answer
+JavaScript	Makes websites interactive
+Data Types	7 primitive + Object (non-primitive)
+Hoisting	Declarations move to the top
+debugger	Pauses execution for debugging
+==	Compares value only (after type coercion)
+===	Compares value and type
+var	Function scope
+let	Block scope
+Type Coercion	Automatic type conversion
+Dynamic Typing	Variable type can change at runtime
+NaN	Invalid numeric value (typeof NaN === "number")
+Pass by Value	Primitive types
+Pass by Reference	Objects
+IIFE	Runs immediately after definition
+Strict Mode	Enforces safer JavaScript
+Higher-Order Function	Takes or returns another function
+this	Refers to the object that invokes the function
 
 Instead of saying:
 ❌ "DOM is used to manipulate elements"
