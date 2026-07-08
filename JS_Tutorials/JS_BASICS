@@ -408,3 +408,59 @@ button.onclick = () => {
 * Aaj ke apps exist hi nahi karte
 
 
+Comparison Table
+Feature	Function	Method
+Independent	✅ Yes	❌ No
+Belongs to an object	❌ No	✅ Yes
+Called using	func()	obj.func()
+this	Depends on how it's called	Usually refers to the owning object
+Reusable independently	✅ Yes	Usually tied to an object
+Interview Definition
+Function
+
+A function is an independent reusable block of code that performs a specific task and can be invoked directly.
+
+Method
+
+A method is a function that is associated with an object and is invoked through that object.
+
+Interview Trick Question
+Is every method a function?
+
+✅ Yes
+
+Because methods are functions stored as object properties.
+
+Is every function a method?
+
+❌ No
+
+A standalone function is just a function until it becomes a property of an object.
+
+Easy Trick to Remember (Hinglish)
+Function → "Akele rehta hai." (Independent)
+Method → "Object ke ghar mein rehta hai." (Belongs to an object)
+Memory Trick
+Independent Function
+↓
+
+function greet(){}
+
+↓
+
+Function
+Object + Function
+
+↓
+
+const person = {
+    greet(){}
+}
+
+↓
+
+Method
+⭐ Interview One-Liner
+
+A function is an independent reusable block of code, whereas a method is simply a function that is stored as a property of an object and is called through that object.
+
