@@ -330,4 +330,98 @@ apply() is a method that invokes a function immediately and allows you to explic
 bind() is a method that does not invoke the function immediately. Instead, it returns a new function with this permanently bound to the specified object.
 
 
+First understand one thing.
+
+Problem
+function introduce() {
+    console.log(this.name);
+}
+
+Now
+
+let person = {
+    name: "Lucky"
+};
+
+How can we make
+
+this = person
+
+JavaScript gives us
+
+call()
+apply()
+bind()
+call()
+
+Runs the function immediately.
+
+Arguments are passed one by one.
+
+function greet(city) {
+    console.log(this.name + " from " + city);
+}
+
+let person = {
+    name: "Lucky"
+};
+
+greet.call(person, "Mathura");
+
+Output
+
+Lucky from Mathura
+apply()
+
+Exactly same as call()
+
+Difference
+
+Arguments are passed inside an array.
+
+greet.apply(person, ["Mathura"]);
+
+Output
+
+Lucky from Mathura
+bind()
+
+This one is different.
+
+It does NOT run immediately.
+
+Instead,
+
+It returns a new function.
+
+let newFunction = greet.bind(person, "Mathura");
+
+newFunction();
+
+Output
+
+Lucky from Mathura
+Easy Memory Trick
+call()
+
+Runs immediately
+Arguments separately
+
+-----------------------
+
+apply()
+
+Runs immediately
+Arguments inside array
+
+-----------------------
+
+bind()
+
+Does NOT run
+Returns a new function
+Interview Answer
+
+call() and apply() invoke the function immediately. bind() returns a new function. call() takes arguments separately, whereas apply() takes them as an array.
+
 _______________________________________________________________________________________________________________________________________________________
