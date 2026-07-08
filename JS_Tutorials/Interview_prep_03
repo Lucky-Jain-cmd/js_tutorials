@@ -1,0 +1,510 @@
+21. Advantages of JavaScript
+Interview Definition
+
+JavaScript is a lightweight, fast, and versatile programming language used to create interactive web applications on both the client-side and server-side.
+
+Simple Language
+
+JavaScript makes websites alive and interactive.
+
+Without JavaScript:
+
+❌ Buttons don't work
+❌ Forms don't validate
+❌ Sliders don't move
+
+With JavaScript:
+
+✅ Button Click
+✅ Login Validation
+✅ Animations
+✅ Games
+✅ Chat Apps
+Advantages
+1. Runs in Browser (Client Side)
+
+Example
+
+alert("Welcome");
+
+No server needed.
+
+2. Runs on Server (Node.js)
+
+JavaScript can also create backend APIs.
+
+Example
+
+const express = require("express");
+3. Easy to Learn
+
+Syntax is simple.
+
+let age = 22;
+4. Fast
+
+Runs directly inside the browser.
+
+5. Huge Community
+
+Thousands of libraries
+
+React
+Angular
+Vue
+Node.js
+Hinglish
+
+JavaScript ek hi language hai jo Frontend aur Backend dono bana sakti hai.
+
+22. What are Object Prototypes?
+Interview Definition
+
+A prototype is an object from which other objects inherit properties and methods.
+
+Simple Meaning
+
+Prototype means
+
+Parent Object
+
+Children automatically get its properties.
+
+Real Life Example
+
+Father
+
+↓
+
+Son
+
+The son inherits
+
+Height
+Eye Color
+Surname
+
+Similarly
+
+Objects inherit methods.
+
+Example
+
+let arr = [];
+
+We never wrote
+
+arr.push()
+
+ourselves.
+
+Still it works.
+
+Why?
+
+Because
+
+Array
+
+↓
+
+Array.prototype
+
+↓
+
+push()
+pop()
+map()
+filter()
+
+JavaScript automatically finds push() in Array.prototype.
+
+Hinglish
+
+Prototype = Parent object jisse methods inherit hote hain.
+
+23. What are Callbacks?
+Interview Definition
+
+A callback is a function passed as an argument to another function and executed later.
+
+Simple Example
+function greet(name){
+    console.log("Hello " + name);
+}
+
+function process(callback){
+    callback("Lucky");
+}
+
+process(greet);
+
+Output
+
+Hello Lucky
+Real Life Analogy
+
+You order Pizza.
+
+Restaurant says
+
+"Pizza ready hone ke baad hum call karenge."
+
+That call is a callback.
+
+Hinglish
+
+Callback = Ek function jo kisi doosre function ke complete hone ke baad chalaya jata hai.
+
+24. Types of Errors
+
+Mainly
+
+1. Syntax Error
+
+Meaning
+
+Wrong grammar.
+
+Example
+
+let a ==
+
+Output
+
+SyntaxError
+2. Logical Error
+
+Code runs.
+
+But output is wrong.
+
+Example
+
+let age = 20;
+
+if(age > 50){
+    console.log("Adult");
+}
+
+No syntax error.
+
+But logic is incorrect.
+
+Hinglish
+
+Syntax Error
+
+↓
+
+Grammar mistake
+
+Logical Error
+
+↓
+
+Thinking mistake
+
+25. What is Memoization?
+Interview Definition
+
+Memoization is an optimization technique that stores previously computed results and reuses them instead of recalculating.
+
+Simple Example
+
+Suppose
+
+10 + 20
+
+First time
+
+Computer calculates.
+
+Second time
+
+Instead of calculating again
+
+Computer says
+
+Already stored.
+
+Returns cached value.
+
+Real Life Analogy
+
+Calculator
+
+25 × 25
+
+Already solved yesterday.
+
+Instead of solving again
+
+You look at your notebook.
+
+That's memoization.
+
+Hinglish
+
+Memoization =
+
+Ek baar calculation karo aur future ke liye save kar lo.
+
+26. What is Recursion?
+Interview Definition
+
+Recursion is a technique where a function calls itself until a base condition is reached.
+
+Example
+
+function count(n){
+
+    if(n==0)
+        return;
+
+    console.log(n);
+
+    count(n-1);
+
+}
+
+count(3);
+
+Output
+
+3
+2
+1
+
+Function keeps calling itself.
+
+Real Life Analogy
+
+Mirror in front of another mirror.
+
+Reflection
+
+↓
+
+Reflection
+
+↓
+
+Reflection
+
+Until it stops.
+
+Hinglish
+
+Recursion
+
+=
+
+Function khud ko hi baar-baar call karta hai.
+
+27. Constructor Function
+Interview Definition
+
+A constructor function is used to create multiple objects with similar properties and methods.
+
+Example
+
+function Person(name){
+
+    this.name = name;
+
+}
+
+let p1 = new Person("Lucky");
+
+let p2 = new Person("Rahul");
+
+Output
+
+Lucky
+
+Rahul
+Real Life Example
+
+Car Factory
+
+Same design
+
+Different colors
+
+Similarly
+
+Constructor
+
+↓
+
+Creates multiple similar objects.
+
+Hinglish
+
+Constructor
+
+=
+
+Object banane ki machine.
+
+28. What is DOM?
+Interview Definition
+
+DOM (Document Object Model) is a tree-like representation of an HTML document that JavaScript can access and modify.
+
+HTML
+
+<h1>Hello</h1>
+
+DOM
+
+Document
+
+↓
+
+html
+
+↓
+
+body
+
+↓
+
+h1
+
+JavaScript
+
+document.querySelector("h1").innerHTML="Hi";
+
+Output
+
+Hi
+Hinglish
+
+DOM
+
+=
+
+Browser HTML ko object bana deta hai jise JavaScript change kar sakti hai.
+
+29. charAt()
+
+Used to get a character from a string.
+
+Example
+
+let name = "Lucky";
+
+console.log(name.charAt(2));
+
+Output
+
+c
+
+Index
+
+L  u  c  k  y
+
+0  1  2  3  4
+Hinglish
+
+charAt()
+
+=
+
+Kisi index ka character nikalna.
+
+30. What is BOM?
+Interview Definition
+
+BOM (Browser Object Model) allows JavaScript to interact with the browser window.
+
+Examples
+
+window.alert("Hello");
+window.location
+window.history
+window.navigator
+Hinglish
+
+DOM
+
+↓
+
+Controls HTML
+
+BOM
+
+↓
+
+Controls Browser
+
+Easy Trick
+
+DOM
+
+↓
+
+Website
+
+BOM
+
+↓
+
+Browser
+31. Client-side vs Server-side JavaScript
+Client Side	Server Side
+Runs in Browser	Runs on Server
+Uses Browser	Uses Node.js
+Manipulates HTML	Connects Database
+Faster UI	Handles Business Logic
+Client Side Example
+document.body.style.background="red";
+
+Changes webpage.
+
+Server Side Example
+const express = require("express");
+
+Creates server.
+
+Real Life Analogy
+
+Restaurant
+
+Customer
+
+↓
+
+Waiter
+
+↓
+
+Kitchen
+
+Client Side
+
+↓
+
+Waiter taking order
+
+Server Side
+
+↓
+
+Kitchen preparing food
+
+⭐ Quick Interview Revision Table
+Question	One-Line Answer
+Advantages of JavaScript	Fast, easy, works on both frontend and backend, makes web pages interactive.
+Prototype	Parent object from which other objects inherit properties and methods.
+Callback	A function passed to another function to be executed later.
+Errors	Syntax Error (grammar mistake) and Logical Error (wrong logic).
+Memoization	Stores previously calculated results to avoid recalculation.
+Recursion	A function calling itself until a base condition is met.
+Constructor Function	Used to create multiple similar objects.
+DOM	Object representation of an HTML document that JavaScript can manipulate.
+charAt()	Returns the character at a specified index in a string.
+BOM	Browser Object Model used to interact with the browser (window, history, location, etc.).
+Client-side vs Server-side JS	Client-side runs in the browser; server-side runs on the server using Node.js.
