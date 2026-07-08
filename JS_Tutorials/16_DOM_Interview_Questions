@@ -316,4 +316,18 @@ Instead of saying:
 
 Say:
 ✅ "We use DOM to dynamically update UI like adding items to a cart without reloading the page"
+
+1. call()
+
+call() is a method that invokes a function immediately and allows you to explicitly set the value of this. Arguments are passed individually.
+
+2. apply()
+
+apply() is a method that invokes a function immediately and allows you to explicitly set the value of this. Arguments are passed as an array (or array-like object).
+
+3. bind()
+
+bind() is a method that does not invoke the function immediately. Instead, it returns a new function with this permanently bound to the specified object.
+
+
 _______________________________________________________________________________________________________________________________________________________
