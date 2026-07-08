@@ -1,0 +1,541 @@
+What is Prototype Design Pattern?
+Interview Definition
+
+Prototype Design Pattern is a creational design pattern in which new objects are created by copying (cloning) an existing object instead of creating them from scratch.
+
+Simple Definition
+
+Instead of creating a new object from the beginning,
+
+👉 copy an existing object.
+
+Real-Life Analogy
+
+Suppose a school has 100 identical ID cards.
+
+Instead of designing every card from scratch,
+
+The school creates one template and makes copies.
+
+Original ID Card
+        │
+        ▼
+ Copy 1
+ Copy 2
+ Copy 3
+ Copy 4
+
+Exactly the same idea.
+
+Example
+const person = {
+    name: "Lucky",
+    age: 22
+};
+
+const person2 = Object.create(person);
+
+console.log(person2.name);
+
+Output
+
+Lucky
+
+person2 inherits properties from person.
+
+Why use it?
+
+Instead of creating similar objects repeatedly,
+
+create one prototype and reuse it.
+
+Interview One-Liner
+
+Prototype Pattern creates new objects by cloning an existing object rather than creating them from scratch.
+
+3. var vs let vs const
+
+(We've already studied this deeply.)
+
+Quick Revision
+Feature	var	let	const
+Scope	Function	Block	Block
+Redeclare	✅ Yes	❌ No	❌ No
+Reassign	✅ Yes	✅ Yes	❌ No
+Hoisted	Yes (undefined)	Yes (TDZ)	Yes (TDZ)
+
+Memory Trick
+
+var
+↓
+
+Old JavaScript
+
+let
+
+↓
+
+Modern Variable
+
+const
+
+↓
+
+Constant Reference
+4. Rest Parameter vs Spread Operator
+
+Both use
+
+...
+
+But their work is opposite.
+
+Rest Parameter
+Interview Definition
+
+Rest parameter collects multiple arguments into a single array.
+
+Example
+
+function add(...numbers){
+    console.log(numbers);
+}
+
+add(1,2,3,4);
+
+Output
+
+[1,2,3,4]
+
+Think
+
+Many
+
+↓
+
+One Array
+Spread Operator
+Interview Definition
+
+Spread operator expands an array or object into individual elements.
+
+Example
+
+let arr=[1,2,3];
+
+console.log(...arr);
+
+Output
+
+1 2 3
+
+Think
+
+One Array
+
+↓
+
+Many Values
+Memory Trick
+
+Rest
+
+Collect
+
+Spread
+
+Expand
+5. Ways to Create Objects
+
+There are mainly six ways.
+
+1.
+const obj = {};
+2.
+const obj = new Object();
+3.
+function Person(){}
+
+const p = new Person();
+4.
+class Person{}
+
+const p = new Person();
+5.
+Object.create(proto);
+6.
+
+Factory Function
+
+function createPerson(name){
+   return {name};
+}
+
+Interview Answer
+
+JavaScript objects can be created using object literals, constructors, classes, Object.create(), factory functions, and the Object constructor.
+
+6. Promises
+Interview Definition
+
+A Promise is an object representing the eventual success or failure of an asynchronous operation.
+
+States
+
+Pending
+
+↓
+
+Fulfilled
+
+OR
+
+Rejected
+
+Example
+
+let promise = new Promise((resolve,reject)=>{
+
+    resolve("Done");
+
+});
+
+promise.then(data=>console.log(data));
+
+Output
+
+Done
+
+Real-Life Example
+
+Online Food Order
+
+Order
+
+↓
+
+Pending
+
+↓
+
+Delivered
+
+OR
+
+Cancelled
+7. Classes
+Definition
+
+A class is a blueprint for creating objects.
+
+Example
+
+class Student{
+
+    constructor(name){
+        this.name=name;
+    }
+
+}
+
+let s=new Student("Lucky");
+
+Real-Life
+
+Blueprint
+
+↓
+
+House
+8. Generator Function
+
+Special function that can
+
+Pause
+
+Resume
+
+Pause
+
+Resume
+
+Example
+
+function* demo(){
+
+    yield 1;
+
+    yield 2;
+
+}
+next()
+
+↓
+
+1
+
+next()
+
+↓
+
+2
+9. WeakSet
+
+Like Set
+
+But stores only
+
+Objects
+
+Not
+
+Number
+
+String
+
+Boolean
+10. Why Callback?
+
+Because JavaScript is asynchronous.
+
+Instead of waiting,
+
+It continues executing.
+
+When work completes,
+
+Callback executes.
+
+Restaurant Example
+
+Order
+
+↓
+
+Cooking
+
+↓
+
+Callback
+
+↓
+
+Food Ready
+11. WeakMap
+
+Like Map
+
+Keys must be
+
+Objects
+
+Only.
+
+12. Destructuring
+
+Old
+
+let name=obj.name;
+
+New
+
+let {name}=obj;
+
+Array
+
+let [a,b]=[10,20];
+13. Classical vs Prototypal Inheritance
+
+Classical
+
+Class
+
+↓
+
+Object
+
+Java
+
+C++
+
+JavaScript
+
+Object
+
+↓
+
+Object
+
+Prototype
+
+14. TDZ
+
+Already studied.
+
+Hoisted
+
+↓
+
+Not Initialized
+
+↓
+
+TDZ
+
+↓
+
+Initialization
+
+↓
+
+Usable
+15. Design Patterns
+
+Reusable coding solutions.
+
+Three types
+
+Creational
+
+Structural
+
+Behavioral
+16. Pass by Value vs Pass by Reference
+
+JavaScript is always pass-by-value.
+
+For primitives, the value itself is copied.
+For objects, the reference value (memory address) is copied, so two variables point to the same object.
+
+Example
+
+let a=10;
+
+let b=a;
+
+b=20;
+a=10
+
+b=20
+
+Objects
+
+let obj1={name:"Lucky"};
+
+let obj2=obj1;
+
+Both point to the same object.
+
+17. Async/Await vs Generator
+
+Async/Await
+
+Easier
+Cleaner
+Built for async code
+
+Generator
+
+Manual control
+Uses yield
+Can pause/resume execution
+18. Primitive Data Types
+
+There are 7 primitive types in modern JavaScript:
+
+Number
+String
+Boolean
+Undefined
+Null
+Symbol
+BigInt
+19. Deferred Script
+<script defer src="app.js"></script>
+
+Meaning
+
+Download JS
+
+↓
+
+Continue HTML
+
+↓
+
+Execute JS after HTML finishes parsing
+
+Makes page loading faster.
+
+20. Lexical Scoping
+
+A function can access variables from its parent scope.
+
+Example
+
+let name="Lucky";
+
+function show(){
+
+    console.log(name);
+
+}
+
+show();
+
+Output
+
+Lucky
+
+JavaScript decides scope based on where the function is written, not where it is called.
+
+21. Explain This Code (Closure)
+var scope = "global";
+
+function check(){
+
+    var scope = "local";
+
+    function f(){
+
+        return scope;
+
+    }
+
+    return f;
+
+}
+
+Suppose
+
+let result = check();
+
+console.log(result());
+
+Output
+
+local
+Why?
+
+Because f() remembers the variables from the scope where it was created, not where it is called.
+
+This is called a Closure.
+
+⭐ Quick Interview Revision
+Topic	One-Line Answer
+Arrow Function	Short ES6 function syntax that inherits this from the surrounding scope.
+Prototype Pattern	Creates new objects by copying an existing object.
+Rest	Collects multiple arguments into an array.
+Spread	Expands an array or object into individual elements.
+Promise	Handles asynchronous operations with Pending, Fulfilled, and Rejected states.
+Class	Blueprint for creating objects.
+Generator	Function that can pause and resume using yield.
+WeakSet	Set that stores only objects with weak references.
+WeakMap	Map whose keys must be objects.
+Destructuring	Extracts values from objects or arrays easily.
+TDZ	Time before a let or const variable is initialized.
+Async/Await	Cleaner way to write asynchronous code.
+Primitive Types	Number, String, Boolean, Undefined, Null, Symbol, BigInt.
+defer	Delays script execution until HTML parsing is complete.
+Lexical Scoping	A function accesses variables from the scope where it was defined.
+Closure	A function remembers variables from its outer scope even after the outer function finishes.
