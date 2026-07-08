@@ -1,0 +1,539 @@
+1. What is JavaScript?
+Interview Answer
+
+JavaScript is a high-level, interpreted scripting language used to make web pages interactive and dynamic.
+
+Without JavaScript:
+
+HTML → Structure
+CSS → Styling
+JavaScript → Behaviour
+Example
+
+Imagine YouTube.
+
+HTML creates
+
+Video
+Buttons
+Comments
+
+CSS makes them beautiful.
+
+JavaScript makes
+
+Play button work
+Pause button work
+Like button increase count
+Comments appear instantly
+
+Without JavaScript, websites would look like a newspaper.
+
+With JavaScript, they become applications.
+
+Easy Analogy
+
+Think of a Car.
+
+HTML = Car Body 🚗
+
+CSS = Paint + Design 🎨
+
+JavaScript = Engine 🔥
+
+Interview One-Liner
+
+JavaScript is used to add logic and interactivity to websites.
+
+2. Data Types
+
+JavaScript has 8 data types
+
+Primitive (7)
+
+These store a single value.
+
+Data Type	Example
+String	"Lucky"
+Number	25
+BigInt	123456789n
+Boolean	true
+Undefined	let x;
+Null	null
+Symbol	Symbol()
+Non Primitive (1)
+
+Object
+
+Everything complex is an object.
+
+Examples
+
+let person={
+ name:"Lucky",
+ age:22
+}
+
+Array
+
+let arr=[10,20,30]
+
+Function
+
+function hello(){}
+
+Even Arrays and Functions are Objects internally.
+
+Interview Trick
+typeof null
+
+Output
+
+object
+
+This is a famous JavaScript bug.
+
+Interview Answer
+
+Primitive types store a single value while non-primitive types store collections of values.
+
+3. Hoisting
+
+This is among the Top 5 JavaScript interview questions.
+
+Simple Meaning
+
+Before executing code,
+
+JavaScript moves declarations to the top.
+
+Not values.
+
+Example
+
+console.log(a);
+
+var a=10;
+
+Internally JavaScript sees
+
+var a;
+
+console.log(a);
+
+a=10;
+
+Output
+
+undefined
+
+Remember
+
+Declaration
+
+var a;
+
+is hoisted.
+
+Initialization
+
+a=10;
+
+is NOT hoisted.
+
+Functions are also hoisted.
+
+hello();
+
+function hello(){
+console.log("Hi");
+}
+
+Works perfectly.
+
+Interview One-Liner
+
+Hoisting means JavaScript moves declarations to the top of their scope before execution.
+
+4. debugger
+
+Very easy.
+
+let a=10;
+
+debugger;
+
+a++;
+
+Execution stops here.
+
+You can inspect variables.
+
+Think of it as putting a checkpoint.
+
+Interview Answer
+
+debugger pauses code execution so developers can inspect variables and debug the program.
+
+5. == vs ===
+
+This is VERY IMPORTANT.
+
+==
+
+Loose Equality
+
+Checks only value.
+
+Performs type conversion.
+
+5=="5"
+
+Output
+
+true
+
+Because
+
+"5"
+
+↓
+
+5
+===
+
+Strict Equality
+
+Checks
+
+Value
+Type
+5==="5"
+
+Output
+
+false
+
+Interview Shortcut
+
+==
+
+↓
+
+Value only
+
+===
+
+↓
+
+Value + Type
+6. var vs let
+var	let
+Function Scope	Block Scope
+Redeclare Allowed	Not Allowed
+Hoisted	Hoisted but TDZ
+Old JS	ES6
+
+Example
+
+if(true){
+
+var a=10;
+
+}
+
+console.log(a);
+
+Output
+
+10
+
+Now
+
+if(true){
+
+let a=10;
+
+}
+
+console.log(a);
+
+Output
+
+Reference Error
+
+Why?
+
+Because let is Block Scoped.
+
+Interview Answer
+
+var is function scoped while let is block scoped. let also prevents accidental redeclaration.
+
+7. Type Coercion
+
+Meaning
+
+JavaScript automatically converts one data type into another.
+
+Example
+
+5+"5"
+
+Output
+
+55
+
+Because
+
+5
+
+↓
+
+"5"
+
+↓
+
+"55"
+
+Another
+
+5-"2"
+
+Output
+
+3
+
+Because
+
+"2"
+
+↓
+
+2
+
+Interview Definition
+
+Type coercion is JavaScript's automatic conversion of one data type into another.
+
+8. Dynamic Typing
+
+JavaScript variables have no fixed type.
+
+Example
+
+let x=10;
+
+Later
+
+x="Lucky";
+
+Still valid.
+
+Java
+
+int x=10;
+
+x="Lucky";
+
+Compilation Error
+
+Interview Answer
+
+JavaScript is dynamically typed because variables can change types during runtime.
+
+9. NaN
+
+NaN means
+
+Not a Number
+
+Example
+
+Number("Hello")
+
+Output
+
+NaN
+
+Funny fact
+
+typeof NaN
+
+Output
+
+number
+
+Interview Answer
+
+NaN represents an invalid numeric result.
+
+10. Pass by Value vs Pass by Reference
+Primitive
+
+Passed by Value
+
+let a=10;
+
+let b=a;
+
+a=20;
+
+console.log(b);
+
+Output
+
+10
+Object
+
+Passed by Reference
+
+let a={
+name:"Lucky"
+};
+
+let b=a;
+
+a.name="Raj";
+
+console.log(b.name);
+
+Output
+
+Raj
+
+Because both variables point to the same object.
+
+Interview Answer
+
+Primitive values are copied by value, while objects are shared by reference.
+
+11. IIFE (Immediately Invoked Function Expression)
+
+Runs immediately after creation.
+
+(function(){
+
+console.log("Hello");
+
+})();
+
+Output
+
+Hello
+
+Used to avoid global variable pollution.
+
+Interview Answer
+
+IIFE is a function expression that executes immediately after it is defined.
+
+12. Strict Mode
+"use strict";
+
+Makes JavaScript stricter.
+
+Example
+
+Without strict mode
+
+x=10;
+
+Works.
+
+With strict mode
+
+"use strict";
+
+x=10;
+
+Error
+
+Because variable wasn't declared.
+
+Interview Answer
+
+Strict mode catches common JavaScript mistakes and prevents unsafe coding practices.
+
+13. Higher Order Function
+
+A function that
+
+takes another function as argument
+OR returns another function
+
+Example
+
+function greet(fn){
+
+fn();
+
+}
+
+greet(function(){
+
+console.log("Hi");
+
+});
+
+Examples in JavaScript
+
+map()
+filter()
+reduce()
+forEach()
+
+Interview Answer
+
+A higher-order function accepts another function as an argument or returns one.
+
+14. this Keyword
+
+Simple Rule:
+
+this refers to the object that calls the function.
+
+let person={
+
+name:"Lucky",
+
+show(){
+
+console.log(this.name);
+
+}
+
+}
+
+person.show();
+
+Output
+
+Lucky
+
+Think
+
+Object.Function()
+
+↓
+
+this = Object
+⭐ Super Interview Revision (Remember These)
+Topic	One-Line Answer
+JavaScript	Makes websites interactive
+Data Types	7 primitive + Object (non-primitive)
+Hoisting	Declarations move to the top
+debugger	Pauses execution for debugging
+==	Compares value only (after type coercion)
+===	Compares value and type
+var	Function scope
+let	Block scope
+Type Coercion	Automatic type conversion
+Dynamic Typing	Variable type can change at runtime
+NaN	Invalid numeric value (typeof NaN === "number")
+Pass by Value	Primitive types
+Pass by Reference	Objects
+IIFE	Runs immediately after definition
+Strict Mode	Enforces safer JavaScript
+Higher-Order Function	Takes or returns another function
+this	Refers to the object that invokes the function
