@@ -150,7 +150,16 @@ console.log("Hi");
 }
 
 Works perfectly.
+console.log(a); // undefined
+var a = 10;
 
+greet(); // "Hello!"
+function greet() {
+  console.log("Hello!");
+}
+
+console.log(b); // ReferenceError / Temporal Dead Zone (TDZ).
+let b = 20;
 Interview One-Liner
 
 Hoisting means JavaScript moves declarations to the top of their scope before execution.
